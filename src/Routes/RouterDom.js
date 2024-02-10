@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Star from "../page/Start/Star"; 
+import Start from "../page/Start/Start"; 
 
 const RouterDom = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Star />} /> 
+        <Route path="/" element={<Start />} /> 
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </>
