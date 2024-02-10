@@ -1,35 +1,20 @@
 /* LoadingAnimation.css */
-.loading-spinner {
+.loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  /* Cambiado de 'display' a 'position: fixed;' */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  /* Asegura que el contenedor ocupe toda la anchura */
   height: 100vh;
-  /* Ocupa toda la altura de la ventana */
-  z-index: 1000;
-  /* Asegura que el spinner esté por encima de otros elementos */
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
 }
 
 .spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border-left-color: #09f;
-  animation: spin 1s infinite linear;
+  /* Tus estilos existentes para el spinner */
+}
+
+.loading-text {
+  margin-top: 20px; /* Ajusta el espacio sobre el texto según necesites */
+  font-size: 20px; /* Tamaño del texto */
+  color: white; /* Color del texto */
+  text-align: center;
 }
