@@ -1,15 +1,17 @@
-import { Navigate, Route, Routes } from "react-router-dom";
 import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Star from "../page/Start/Star"; 
 
-// import InfoAccount from "../pages/Account/InfoAccount";
-const RoterDom = () => {
+const RouterDom = () => {
   return (
     <>
       <Routes>
-      <Route path="/" element={<sd />} /> 
+        <Route path="/" element={<Star />} /> 
+        <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
 };
 
-export default RoterDom;
+export default RouterDom;
+
