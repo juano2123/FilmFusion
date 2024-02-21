@@ -1,5 +1,16 @@
 .Switch{
     display: flex;
     justify-content: center;
-
+    border-color: black;
 }
+
+.botones{
+background-color:rgba(57, 57, 57, 0.7);
+padding: 0.5em;
+border-radius: 10px;
+}
+
+.btn{
+    background-color: transparent;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
