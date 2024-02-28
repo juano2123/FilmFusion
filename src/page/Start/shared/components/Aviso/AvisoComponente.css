@@ -1,0 +1,45 @@
+.filmy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 100vw; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+    height: 100vh;
+    z-index: 1001;
+    background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
+  }
+  
+  .avisoComponenteContainer {
+    background-color: #A4A4AB;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px; /* Mueve el cuadro de texto un poco a la derecha */
+  }
+  
+  .avisoComponenteImagen {
+    width: 300px; /* Establece un ancho fijo */
+    height: auto; /* Mantiene la proporción de la imagen ajustando el alto automáticamente */
+    margin-left: -390px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1002;
+}
+
+
+  
+  .avisoComponenteTexto {
+    color: black;
+  }
+  
