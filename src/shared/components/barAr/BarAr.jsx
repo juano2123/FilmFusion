@@ -11,7 +11,7 @@ const BarAr = () => {
         {state === "fill" ? (
           <>
             <button class="btn" className="AR">
-              ar
+              ar tf
             </button>
 
             <button class="btn">objet</button>
