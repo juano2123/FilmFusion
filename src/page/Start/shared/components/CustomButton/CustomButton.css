@@ -1,0 +1,18 @@
+/* CustomButton.css */
+
+button {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    /* Establece el outline a none para evitar el outline predeterminado */
+    outline: none;
+    transition: opacity 0.3s; /* Transición suave para la opacidad */
+  }
+  
+
+  .customButton:active {
+    opacity: 0.7; /* Opacidad reducida cuando el botón es presionado */
+  }
+  
+  
