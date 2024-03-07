@@ -1,0 +1,41 @@
+/* AudioControls.css */
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 100vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: -13px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.control-button svg {
+    fill: #000;
+    width: 24px;
+    height: 24px;
+}
+
+.progress-bar-container {
+    display: flex;
+    width: 250px;
+    justify-content: center;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #ccc;
+    margin-bottom: 38px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #007bff;
+    width: 0%;
+}
