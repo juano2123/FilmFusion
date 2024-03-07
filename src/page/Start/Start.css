@@ -1,17 +1,25 @@
+/* Start.css */
 
-  /* Start.css */
+
 .aviso-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    background-color: rgba(0,0,0,0.75);
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .contenido-principal {
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Ocupa toda la altura de la ventana */
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.contenido-principal {
+  display: flex; /* Usa flexbox para centrar el contenido si es necesario */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: 100vh; /* Hace que el contenido principal tenga una altura del 100% del viewport */
+  width: 100vw; /* Hace que el contenido principal tenga un ancho del 100% del viewport */
+  padding: 20px; /* Añade un padding interno */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho/altura total */
+  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); /* Aplica el gradiente de fondo */
+}
