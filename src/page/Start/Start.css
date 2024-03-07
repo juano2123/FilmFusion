@@ -1,0 +1,17 @@
+
+  /* Start.css */
+.aviso-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: rgba(0,0,0,0.75);
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .contenido-principal {
+    padding: 20px;
+  }
+  

@@ -1,0 +1,20 @@
+/* LoadingAnimation.css */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
+}
+
+.spinner {
+  /* Tus estilos existentes para el spinner */
+}
+
+.loading-text {
+  margin-top: 20px; /* Ajusta el espacio sobre el texto según necesites */
+  font-size: 20px; /* Tamaño del texto */
+  color: white; /* Color del texto */
+  text-align: center;
+}
