@@ -1,6 +1,6 @@
 import React from 'react';
 import './AvisoComponente.css'; // Asegúrate de que la ruta sea correcta
-import imagenFilmy from './componetes/filmy.png'; 
+import imagenFilmy from './assets/filmy.png'; 
 
 const AvisoComponente = () => {
   return (
