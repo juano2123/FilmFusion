@@ -1,0 +1,27 @@
+/* SquareWithContent.css */
+
+.square-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 200px; */
+    /* height: 200px;  */
+    border: 1px solid #000; /* Borde para visualizar el cuadrado */
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+  
+  .square-image {
+    /* max-width: 100%;  */
+    height: auto;
+  }
+  
+  .square-text, .square-serial {
+    text-align: center;
+    margin: 5px 0; /* Espaciado entre elementos */
+    color: white;
+    font-family: sans-serif;
+  }
+  

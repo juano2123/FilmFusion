@@ -11,7 +11,7 @@ button {
   }
   
 
-  .customButton:active {
+  .customButton:active, .control-button:active {
     opacity: 0.7; /* Opacidad reducida cuando el botón es presionado */
   }
 
@@ -32,6 +32,7 @@ button {
   .control-button img {
     width: 30%;
     margin-left: 20px;
+    transition: opacity 0.3s; /* Transición suave para la opacidad */
 
   }
   
