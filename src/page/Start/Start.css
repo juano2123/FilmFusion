@@ -15,7 +15,7 @@
 }
 
 .contenido-principal {
-  display: flex; /* Usa flexbox para centrar el contenido si es necesario */
+  /* display: flex; Usa flexbox para centrar el contenido si es necesario */
   justify-content: center; /* Centra el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
   height: 100vh; /* Hace que el contenido principal tenga una altura del 100% del viewport */

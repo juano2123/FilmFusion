@@ -5,6 +5,7 @@ import CustomButton from './shared/components/CustomButton/CustomButton';
 import MapIcon from './shared/components/CustomButton/assets/map.svg';
 import AudioControls from './shared/components/AudioControls/AudioControls'; // Asegúrate que la ruta es correcta
 import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
+import SquareWithContent from './shared/components/SquareWithContent/SquareWithContent';
 import './Start.css';
 
 const Start = () => {
@@ -45,8 +46,17 @@ const Start = () => {
        fontSize="medium" fontFamily
         outline="2px solid black"
         imageUrl={MapIcon} /> 
+        <div className="componente">
+
+        <SquareWithContent size="large" color="rgba(19, 6, 35, 0.71)" text="Felicidades! Haz armado el rompecabezas! Comparte tu experciencia en:" />
         
+           <CustomButton text="¿Y si me armas?"
+       color="white" size="small"
+       fontSize="medium" fontFamily
+        outline="2px solid black"/>
         </div>
+        </div>
+        
       )}
 
     </div>
