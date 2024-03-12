@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AvisoComponente from './shared/components/Aviso/AvisoComponente';
 import LoadingAnimation from './shared/components/LoadingAnimation/LoadingAnimation';
 import CustomButton from './shared/components/CustomButton/CustomButton';
+import MapIcon from './shared/components/CustomButton/assets/map.svg';
 import AudioControls from './shared/components/AudioControls/AudioControls'; // Asegúrate que la ruta es correcta
 import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
 import './Start.css';
@@ -36,9 +37,18 @@ const Start = () => {
       {!mostrarCarga && !mostrarAviso && (
         <div className="contenido-principal">
           {/* Aquí podrías incluir CustomButton si es necesario */}
-          <AudioControls audioSrc={audioFile} />
+          {/* <AudioControls audioSrc={audioFile} /> */}
+
+
+      <CustomButton text="RECLAMA TU PREMIO"
+       color="white" size="large"
+       fontSize="medium" fontFamily
+        outline="2px solid black"
+        imageUrl={MapIcon} /> 
+        
         </div>
       )}
+
     </div>
   );
 };
