@@ -1,0 +1,51 @@
+.app {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    width: 163px;
+    height: 45px;
+    background-color: #c4c4c4;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 15px;
+    padding: 2px;
+    margin-top: 20px;
+  }
+  
+  .toggle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    width: 78px;
+    height: 43px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+
+    cursor: pointer;
+    color: #0A84FF;
+    background-color: #1C1C1E;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 9px 17px;
+    border-radius: 15px;
+    position: absolute;
+    transition: all 0.2s ease;
+    left: 50%; /* Initial position for "ON" state */
+  }
+  
+  .disable {
+    background-color: #1C1C1E;
+    left: 6px; /* Position for "OFF" state */
+
+  }
+  
