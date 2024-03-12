@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AvisoComponente from './shared/components/Aviso/AvisoComponente';
 import LoadingAnimation from './shared/components/LoadingAnimation/LoadingAnimation';
+import CustomButton from './shared/components/CustomButton/CustomButton';
+import AudioControls from './shared/components/AudioControls/AudioControls'; // Asegúrate que la ruta es correcta
+import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
 import './Start.css';
-// import CustomButton from './shared/components/CustomButton/CustomButton';
 
 const Start = () => {
   const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);
@@ -33,8 +35,8 @@ const Start = () => {
       
       {!mostrarCarga && !mostrarAviso && (
         <div className="contenido-principal">
-          
-        {/* <CustomButton text="¿Y si me armas?" color="white" size="small" fontSize="medium" fontFamily outline="2px solid black"/> */}
+          {/* Aquí podrías incluir CustomButton si es necesario */}
+          <AudioControls audioSrc={audioFile} />
         </div>
       )}
     </div>
@@ -42,4 +44,3 @@ const Start = () => {
 };
 
 export default Start;
-
