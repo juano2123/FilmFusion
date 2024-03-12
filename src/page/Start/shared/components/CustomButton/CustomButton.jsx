@@ -3,7 +3,7 @@
 import React from 'react';
 import './CustomButton.css'; // Asegúrate de crear este archivo para los estilos
 
-const CustomButton = ({ text, color, size, fontFamily, border, outline }) => {
+const CustomButton = ({ text, color, size, fontFamily, border, outline, imageUrl }) => {
   const styles = {
     backgroundColor: color,
     // Establece el tamaño basado en la prop size
@@ -13,9 +13,17 @@ const CustomButton = ({ text, color, size, fontFamily, border, outline }) => {
     fontFamily: 'sans-serif',
     outline: outline || 'none',
   };
+  const imageStyle = {
+    marginRight: imageUrl ? '10px' : '0', // Añade espacio si hay una imagen
+    height: '100%', // Ajusta esto según necesites
+  };
+
 
   return (
-    <button style={styles}>{text}</button>
+    <button className="control-button" style={styles}>
+      {imageUrl && <img src={imageUrl} alt="imagen-boton" />}
+      <span>{text}</span>
+    </button>
   );
 };
 
