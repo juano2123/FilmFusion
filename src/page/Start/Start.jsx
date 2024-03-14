@@ -37,8 +37,8 @@ const Start = () => {
       
       {!mostrarCarga && !mostrarAviso && (
         <div className="contenido-principal">
-          {/* Aquí podrías incluir CustomButton si es necesario */}
-          {/* <AudioControls audioSrc={audioFile} /> */}
+       
+          <AudioControls audioSrc={audioFile} />
 
 
       <CustomButton text="RECLAMA TU PREMIO"
@@ -54,6 +54,7 @@ const Start = () => {
        color="white" size="small"
        fontSize="medium" fontFamily
         outline="2px solid black"/>
+
         </div>
         </div>
         
