@@ -1,27 +1,32 @@
 /* SquareWithContent.css */
 
 .square-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* width: 200px; */
-    /* height: 200px;  */
-    border: 1px solid #000; /* Borde para visualizar el cuadrado */
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 10px;
-  }
-  
-  .square-image {
-    /* max-width: 100%;  */
-    height: auto;
-  }
-  
-  .square-text, .square-serial {
-    text-align: center;
-    margin: 5px 0; /* Espaciado entre elementos */
-    color: white;
-    font-family: sans-serif;
-  }
-  
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+
+.square-image {
+  /* max-width: 100%;  */
+  height: auto;
+}
+
+.square-text1,
+.square-serial {
+  text-align: end;
+  margin: 5px 0;
+  /* Espaciado entre elementos */
+  color: white;
+  font-family: sans-serif;
+  font-size: 31px;
+  margin-top: 13px;
+}
+.square-text2{
+  text-align: end;
+  font-size: 22px;
+  color: white;
+  font-family: sans-serif;
+  margin: auto;
+}
