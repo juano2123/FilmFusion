@@ -48,7 +48,7 @@ const Start = () => {
         imageUrl={MapIcon} /> 
         <div className="componente">
 
-        <SquareWithContent size="large" color="rgba(19, 6, 35, 0.71)" text="Felicidades! Haz armado el rompecabezas! Comparte tu experciencia en:" />
+        <SquareWithContent size="large" color="rgba(19, 6, 35, 0.71)" text1="¡FELICIDADES!" text2="¡Has armado el rompecabezas! Comparte tu experiencia en:" />
         
            <CustomButton text="¿Y si me armas?"
        color="white" size="small"
