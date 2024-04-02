@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Start from "../page/Start/Start"; 
+import {Ar} from "../page/Start/shared/components/AR/Ar"; 
 
 const RouterDom = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Start />} /> 
+        <Route path="/" element={<Ar />} /> 
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </>
