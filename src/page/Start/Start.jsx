@@ -6,6 +6,9 @@ import MapIcon from './shared/components/CustomButton/assets/map.svg';
 import AudioControls from './shared/components/AudioControls/AudioControls'; // Asegúrate que la ruta es correcta
 import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
 import SquareWithContent from './shared/components/SquareWithContent/SquareWithContent';
+import SocialMediaIcons from './shared/components/SocialMediaIcons/SocialMediaIcons';
+import audioFile1 from './assets/audio2.mp3';
+
 import './Start.css';
 
 const Start = () => {
@@ -38,7 +41,7 @@ const Start = () => {
       {!mostrarCarga && !mostrarAviso && (
         <div className="contenido-principal">
        
-          <AudioControls audioSrc={audioFile} />
+          <AudioControls audioSrc={audioFile1} />
 
 
       <CustomButton text="RECLAMA TU PREMIO"
@@ -54,6 +57,8 @@ const Start = () => {
        color="white" size="small"
        fontSize="medium" fontFamily
         outline="2px solid black"/>
+
+        <SocialMediaIcons/>
 
         </div>
         </div>
