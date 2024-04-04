@@ -25,14 +25,14 @@ const AudioControls = ({ audioSrc }) => {
 
   // Manejador de retroceso
   const handleBackward = () => {
-    const newTime = Math.max(0, audioRef.current.currentTime - 10);
+    const newTime = Math.max(0, audioRef.current.currentTime - 2);
     audioRef.current.currentTime = newTime;
     updateProgress();
   };
 
   // Manejador de avance rápido
   const handleForward = () => {
-    const newTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 10);
+    const newTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 2);
     audioRef.current.currentTime = newTime;
     updateProgress();
   };

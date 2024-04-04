@@ -1,0 +1,22 @@
+/* SocialMediaIcons.css */
+/* SocialMediaIcons.css */
+.social-media-icons {
+    display: flex;
+    justify-content: center; /* Alinea los íconos horizontalmente en el centro */
+    align-items: center; /* Alinea los íconos verticalmente en el centro */
+    padding: 5px; /* Espacio dentro del rectángulo */
+    margin: 20px auto; /* Añade margen arriba/abajo y centra el rectángulo horizontalmente */
+  /* border: 1px solid #ccc; Borde del rectángulo */
+    background-color: rgba(57, 57, 57, 0.7);
+    border-radius: 8px; /* Bordes redondeados del rectángulo */
+    width: 271px; /* O un ancho específico, ajusta según necesites */
+    max-width: 400px; /* Ajusta según necesites */
+  }
+  
+  
+  .social-media-icons a img {
+    height: 50px; /* Ajusta esto según el tamaño deseado para tus íconos */
+    width: auto;
+    margin: 0 15px; /* Espaciado alrededor de los íconos */
+  }
+  

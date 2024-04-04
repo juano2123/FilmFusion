@@ -23,7 +23,7 @@ body {
 }
 
 .contenido-principal {
-  /* display: flex; Usa flexbox para centrar el contenido si es necesario */
+  display: grid; 
   justify-content: center; /* Centra el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
   height: 100vh; /* Hace que el contenido principal tenga una altura del 100% del viewport */
@@ -31,4 +31,8 @@ body {
   padding: 20px; /* Añade un padding interno */
   box-sizing: border-box; /* Asegura que el padding no afecte el ancho/altura total */
   background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); 
+}
+.componente{
+  display: grid;
+  gap: 50px;
 }
