@@ -7,6 +7,7 @@ import AudioControls from './shared/components/AudioControls/AudioControls'; // 
 import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
 import SquareWithContent from './shared/components/SquareWithContent/SquareWithContent';
 import SocialMediaIcons from './shared/components/SocialMediaIcons/SocialMediaIcons';
+import { useNavigate } from "react-router-dom";
 import audioFile1 from './assets/audio2.mp3';
 
 import './Start.css';
@@ -22,7 +23,7 @@ const Start = () => {
 
     const temporizadorCarga = setTimeout(() => {
       setMostrarCarga(false);
-    }, 5000);
+    }, 1000);
 
     window.addEventListener('resize', handleResize);
 
@@ -31,6 +32,16 @@ const Start = () => {
       clearTimeout(temporizadorCarga);
     };
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/objeto");
+  };
+
+  const handleButtonClickOtro = () => {
+    navigate("/galeria");
+  };
 
   return (
     <div>
@@ -44,7 +55,9 @@ const Start = () => {
           <AudioControls audioSrc={audioFile1} />
 
 
-      <CustomButton text="RECLAMA TU PREMIO"
+      <CustomButton 
+       onClick={handleButtonClick}
+      text="RECLAMA TU PREMIO"
        color="white" size="large"
        fontSize="medium" fontFamily
         outline="2px solid black"
@@ -53,7 +66,9 @@ const Start = () => {
 
         <SquareWithContent size="large" color="rgba(19, 6, 35, 0.71)" text1="¡FELICIDADES!" text2="¡Has armado el rompecabezas! Comparte tu experiencia en:" />
         
-           <CustomButton text="¿Y si me armas?"
+           <CustomButton
+                onClick={handleButtonClickOtro}
+           text="¿Y si me armas?"
        color="white" size="small"
        fontSize="medium" fontFamily
         outline="2px solid black"/>
