@@ -4,8 +4,9 @@ export const Ar = () => {
   
   return (
     <>
+    <div className="obj">
          <Spline scene="https://prod.spline.design/hT09RnuEkGYliqfL/scene.splinecode"/>
-
+         </div>
     </>
   );
 };
