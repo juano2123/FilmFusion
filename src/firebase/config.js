@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getstorage} from "firebase/storage"
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,4 +21,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-export const storage = getstorage(app)
+export const storage = getStorage(app)
+async function obtenerImagenUrl(nombreArchivo) {
+  const imagenRef = ref(storage, `ruta/a/tu/imagen/${nombreArchivo}`);
+  try {
+    const url = await getDownloadURL(imagenRef);
+    console.log("URL de la imagen:", url);
+    return url;
+  } catch (error) {
+    console.error("Error al obtener la URL de la imagen:", error);
+    throw error; 
+  }
+}
+
+obtenerImagenUrl('nombre.jpg').then(url => {
+  document.getElementById('tuElementoImg').src = url;
+}).catch(error => {
+  console.error("No se pudo cargar la imagen", error);
+});
