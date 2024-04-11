@@ -8,15 +8,49 @@ html {
     padding: 0;
    
   }
-  .objeto-container{
-        /* display: grid;  */
-        /* justify-content: center; Centra el contenido horizontalmente */
-        /* align-items: center; Centra el contenido verticalmente */
-        height: 100vh; /* Hace que el contenido principal tenga una altura del 100% del viewport */
-        width: 100vw; /* Hace que el contenido principal tenga un ancho del 100% del viewport */
-        padding: 20px; /* Añade un padding interno */
-        box-sizing: border-box; /* Asegura que el padding no afecte el ancho/altura total */
-        background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); 
-        color: white;
-        font-family: sans-serif;
-      }
+
+  .galeria-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
+  }
+  
+  .imagen-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-and-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .imagen-container button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .imagen-container button img {
+    width: 20px; /* Ajusta el tamaño según necesites */
+    height: 30px;
+  }
+  
+  .imagen-container img {
+    width: 325px; /* Ajusta el tamaño según necesites */
+    height: 232px;
+    object-fit: cover;
+  }
+  
+  .descripcion {
+    color: #fff;
+    font-size: 16px;
+    margin-top: 8px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  
