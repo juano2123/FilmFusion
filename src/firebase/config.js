@@ -35,7 +35,7 @@ async function obtenerImagenUrl(nombreArchivo) {
 }
 
 obtenerImagenUrl('nombre.jpg').then(url => {
-  document.getElementById('tuElementoImg').src = url;
+  document.getElementById('elementoimg').src = url;
 }).catch(error => {
   console.error("No se pudo cargar la imagen", error);
 });
