@@ -17,13 +17,18 @@ const firebaseConfig = {
   measurementId: "G-1DWWBRM8K9"
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const storage = getStorage(app);
 
-export const storage = getStorage(app)
+/**
+ * @param {string} nombreArchivo El nombre del archivo en el storage.
+ * @returns {Promise<string>} La URL del archivo.
+ */
 async function obtenerImagenUrl(nombreArchivo) {
-  const imagenRef = ref(storage, `ruta/a/tu/imagen/${nombreArchivo}`);
+  // Construye la referencia al archivo en Storage usando el nombre del archivo
+  const imagenRef = ref(storage, `imagenes/${nombreArchivo}`);
   try {
     const url = await getDownloadURL(imagenRef);
     console.log("URL de la imagen:", url);
@@ -34,8 +39,5 @@ async function obtenerImagenUrl(nombreArchivo) {
   }
 }
 
-obtenerImagenUrl('nombre.jpg').then(url => {
-  document.getElementById('elementoimg').src = url;
-}).catch(error => {
-  console.error("No se pudo cargar la imagen", error);
-});
+
+export default obtenerImagenUrl;
