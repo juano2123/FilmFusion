@@ -10,7 +10,7 @@ html {
   }
 
   .galeria-container {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -52,5 +52,13 @@ html {
     margin-top: 8px;
     text-align: center;
     font-family: sans-serif;
+  }
+
+  .bottom-image {
+    width: 70%; /* O cualquier otro tamaño que prefieras */
+    display: block; /* Esto asegura que no haya espacio extra alrededor de la imagen */
+    margin-top: 20px; /* Espacio entre la galería y la imagen adicional */
+    justify-content: center;
+    align-items: center;
   }
   
