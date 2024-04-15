@@ -1,14 +1,18 @@
 .app {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;  /* Importante para aplicar z-index */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;  /* Asegura que BarAr esté encima de otros componentes */
   }
   
   .toggle-container {
+
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: relative;
     width: 163px;
     height: 45px;
