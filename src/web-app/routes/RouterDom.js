@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Start from "../page/Start/Start";
-import ObjetoPage from "../page/Object/objeto"; // Asegúrate de que la ruta de importación sea correcta
-import GaleriaPage from "../page/galeria/galeria";
+import Start from "../screens/Start/Start";
+import ObjetoPage from "../screens/Object/objeto"; // Asegúrate de que la ruta de importación sea correcta
+import GaleriaPage from "../screens/Galeria/galeria";
 
 const RouterDom = () => {
   return (

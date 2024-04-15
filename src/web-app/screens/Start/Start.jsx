@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import AvisoComponente from './shared/components/Aviso/AvisoComponente';
-import LoadingAnimation from './shared/components/LoadingAnimation/LoadingAnimation';
-import CustomButton from './shared/components/CustomButton/CustomButton';
-import MapIcon from './shared/components/CustomButton/assets/map.svg';
-import AudioControls from './shared/components/AudioControls/AudioControls'; // Asegúrate que la ruta es correcta
-import audioFile from './assets/audio1.mp3'; // Asegura la ruta correcta al archivo de audio
-import SquareWithContent from './shared/components/SquareWithContent/SquareWithContent';
-import SocialMediaIcons from './shared/components/SocialMediaIcons/SocialMediaIcons';
+import AvisoComponente from '../../components/Aviso/AvisoComponente';
+import LoadingAnimation from '../../components/LoadingAnimation/LoadingAnimation';
+import CustomButton from '../../components/CustomButton/CustomButton';
+import MapIcon from '../../components/CustomButton/assets/map.svg';
+import AudioControls from '../../components/AudioControls/AudioControls';
+import audioFile from './assets/audio1.mp3'; // Correct this path as needed
+import SquareWithContent from '../../components/SquareWithContent/SquareWithContent';
+import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import { useNavigate } from "react-router-dom";
-import audioFile1 from './assets/audio2.mp3';
+import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
+
+
 
 import './Start.css';
 
