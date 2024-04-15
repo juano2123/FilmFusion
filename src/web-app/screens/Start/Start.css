@@ -9,30 +9,43 @@ body {
   padding: 0;
 }
 
-.aviso-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  /* Ocupa toda la altura de la ventana */
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
 
 .contenido-principal {
-  display: grid; 
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
-  height: 100vh; /* Hace que el contenido principal tenga una altura del 100% del viewport */
-  width: 100vw; /* Hace que el contenido principal tenga un ancho del 100% del viewport */
-  padding: 20px; /* Añade un padding interno */
-  box-sizing: border-box; /* Asegura que el padding no afecte el ancho/altura total */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  justify-content: flex-end; /* Aligns children to the bottom */
   background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); 
 }
-.componente{
-  display: grid;
-  gap: 50px;
+
+.bottom-container {
+  width: 100%; /* Full width to contain both image and controls */
+  align-items: flex-end;
+  text-align: start;
+  position: relative;
 }
+
+.ticket-image {
+  width: 100%; /* Asegúrate de ajustar esto según tus necesidades */
+  height: auto;
+  display: block;
+}
+.image-overlay-container {
+  position: relative;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 42%;
+  right: 0;
+  transform: translateY(-50%);
+  color: white; /* Asegúrate de que el texto es visible sobre el fondo de la imagen */
+  font-size: 17px; /* Establece el tamaño de la fuente */
+  width: 99%; /* Ocupa todo el ancho del contenedor para alinear el texto desde la derecha */
+  text-align: right; /* Alinea el texto a la derecha */
+  padding: 10px; /* Añade algo de padding si es necesario */
+  font-family: sans-serif;
+}
+
+
+
