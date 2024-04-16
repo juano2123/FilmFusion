@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 150px;
 }
 
 .social-media-icons {
@@ -63,7 +63,7 @@
     .filmy-image {
         margin-left: -160px;
         max-width: 200%; 
-        margin-top: 60px;
+        margin-top: 25px;
     }
 }
 
