@@ -1,7 +1,8 @@
+
 .app {
     display: flex;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
   }
   
   .toggle-container {
@@ -12,12 +13,13 @@
     position: relative;
     width: 163px;
     height: 45px;
-    background-color: #c4c4c4;
+    background-color: rgba(57, 57, 57, 0.7); /* Color #393939 con opacidad del 70% */
     cursor: pointer;
     user-select: none;
     border-radius: 15px;
     padding: 2px;
     margin-top: 20px;
+    font-family: sans-serif;
   }
   
   .toggle-btn {
