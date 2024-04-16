@@ -46,13 +46,13 @@ const Start = () => {
     {!mostrarCarga && mostrarAviso && <AvisoComponente />}
     
     {!mostrarCarga && !mostrarAviso && (
-      <div className="contenido-principal" onClick={handleButtonClick}>
+      <div className="contenido-principal" >
       <div className="bottom-container">
-        <div className="image-overlay-container">
-          <img src={TicketImage} alt="Ticket" className="ticket-image"/>
+        <div className="image-overlay-container" onClick={handleButtonClick}>
+          <img src={TicketImage} alt="Ticket" className="ticket-image" />
           <div className="text-overlay">
-            <p className="overlay-text">Hola soy Filmy!</p>
-            <p className="overlay-text">Te doy la bienvenida a una parte del museo Caliwood!</p>
+            <p className="overlay-text">¡Hola soy Filmy!</p>
+            <p className="overlay-text">¡Te doy la bienvenida a una parte del museo Caliwood!</p>
             <p className="overlay-text">Acompáñame en este recorrido y prepárate para una sorpresa final.</p>
             <p className="overlay-text">Recuerda ponerte tus audífonos para una mejor experiencia.</p>
           </div>
