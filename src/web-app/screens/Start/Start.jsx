@@ -9,9 +9,7 @@ import SquareWithContent from '../../components/SquareWithContent/SquareWithCont
 import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import { useNavigate } from "react-router-dom";
 import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
-
-
-
+import TicketImage from './assets/Ticket.png'; 
 import './Start.css';
 
 const Start = () => {
@@ -41,48 +39,32 @@ const Start = () => {
     navigate("/objeto");
   };
 
-  const handleButtonClickOtro = () => {
-    navigate("/galeria");
-  };
-
   return (
     <div>
-      {mostrarCarga && <LoadingAnimation />}
-      
-      {!mostrarCarga && mostrarAviso && <AvisoComponente />}
-      
-      {!mostrarCarga && !mostrarAviso && (
-        <div className="contenido-principal">
-       
-          <AudioControls audioSrc={audioFile1} />
-
-
-      <CustomButton 
-       onClick={handleButtonClick}
-      text="RECLAMA TU PREMIO"
-       color="white" size="large"
-       fontSize="medium" fontFamily
-        outline="2px solid black"
-        imageUrl={MapIcon} /> 
-        <div className="componente">
-
-        <SquareWithContent size="large" color="rgba(19, 6, 35, 0.71)" text1="¡FELICIDADES!" text2="¡Has armado el rompecabezas! Comparte tu experiencia en:" />
-        
-           <CustomButton
-                onClick={handleButtonClickOtro}
-           text="¿Y si me armas?"
-       color="white" size="small"
-       fontSize="medium" fontFamily
-        outline="2px solid black"/>
-
-        <SocialMediaIcons/>
-
+    {mostrarCarga && <LoadingAnimation />}
+    
+    {!mostrarCarga && mostrarAviso && <AvisoComponente />}
+    
+    {!mostrarCarga && !mostrarAviso && (
+      <div className="contenido-principal" >
+      <div className="bottom-container">
+        <div className="image-overlay-container" onClick={handleButtonClick}>
+          <img src={TicketImage} alt="Ticket" className="ticket-image" />
+          <div className="text-overlay">
+            <p className="overlay-text">¡Hola soy Filmy!</p>
+            <p className="overlay-text">¡Te doy la bienvenida a una parte del museo Caliwood!</p>
+            <p className="overlay-text">Acompáñame en este recorrido y prepárate para una sorpresa final.</p>
+            <p className="overlay-text">Recuerda ponerte tus audífonos para una mejor experiencia.</p>
+          </div>
         </div>
-        </div>
-        
-      )}
-
+        <AudioControls audioSrc={audioFile1} />
+      </div>
     </div>
+    
+    
+    )}
+  </div>
+  
   );
 };
 
