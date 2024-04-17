@@ -10,6 +10,7 @@ const ObjetoPage = () => {
       <div className="objet-container ">
         <BarAr></BarAr>
       </div>
+      <div className=""></div>
       <Ar></Ar>
       <AudioControls></AudioControls>
     </div>

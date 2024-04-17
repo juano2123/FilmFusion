@@ -28,7 +28,7 @@ const storage = getStorage(app);
  */
 async function obtenerImagenUrl(nombreArchivo) {
   // Construye la referencia al archivo en Storage usando el nombre del archivo
-  const imagenRef = ref(storage, `imagenes/${nombreArchivo}`);
+  const imagenRef = ref(storage, `${nombreArchivo}`);
   try {
     const url = await getDownloadURL(imagenRef);
     console.log("URL de la imagen:", url);

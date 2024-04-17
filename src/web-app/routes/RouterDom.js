@@ -16,6 +16,8 @@ const RouterDom = () => {
       <Route path="/galeria" element={<GaleriaPage />} /> 
       <Route path="/ganar" element={<GanarPage />} /> 
       <Route path="/puzzle" element={<PuzzlePage />} /> 
+      <Route path="/Start" element={<Start />} /> 
+
       {/* <Route path="/ganar" element={<GanarPage />} />  */}
       <Route path="/reclamarPremio" element={<PrizePage />} /> 
       <Route path="/*" element={<Navigate to="/" />} />

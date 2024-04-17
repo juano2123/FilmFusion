@@ -2,11 +2,11 @@
 
 .audio-controls {
     display: grid;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     background-color: rgba(0, 0, 0, 0.45);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     
     z-index: 10;
 }
