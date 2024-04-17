@@ -1,6 +1,5 @@
 
 .app {
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   position: fixed;  /* Importante para aplicar z-index */
@@ -8,11 +7,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;  /* Asegura que BarAr esté encima de otros componentes */
-=======
     display: flex;
     justify-content: center;
     /* height: 100vh; */
->>>>>>> 891f076722a950bea9cb11761ee5f902eeb6b447
   }
   
   .toggle-container {
