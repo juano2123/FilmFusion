@@ -1,0 +1,17 @@
+.rectangle-container {
+    width: 391px;
+    height: 103px;
+    border-radius: 15px;
+    background-color: rgba(57, 57, 57, 0.7); /* Color #393939 con opacidad del 70% */
+    display: flex;
+    align-items: center; /* Centra las imágenes verticalmente */
+    justify-content: space-around; /* Distribuye las imágenes equitativamente */
+    overflow: hidden; /* Oculta cualquier parte de las imágenes que excedan los bordes del contenedor */
+    padding: 5px; /* Espacio interno para no tocar los bordes */
+  }
+  
+  .rectangle-image {
+    height: 100%; /* Las imágenes llenarán el alto del contenedor */
+    width: auto; /* Mantiene la relación de aspecto de las imágenes */
+  }
+  

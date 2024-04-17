@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./barAr.css"; // Asumiendo que toggle.css está incluido o sus estilos son parte de App.css
+import "./BarAr.css"; // Asumiendo que toggle.css está incluido o sus estilos son parte de App.css
 
 function BarAr() {
   // Estado para manejar el toggle
