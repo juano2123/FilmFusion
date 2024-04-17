@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
-import './galeria.css'; // Asegúrate de que este archivo de estilos exista
+import './galeria.css'; // Estilos existentes
 import Foto1 from "./assets/Foto1.png";
 import Foto2 from "./assets/Foto2.png";
 import Foto3 from "./assets/Foto3.png";
 import LeftArrow from './assets/left.svg';
 import RightArrow from './assets/right.svg';
-import Dialogo from './assets/Dialogo1.png'
+import Dialogo from './assets/Dialogo1.png';
+import CustomButton from '../../components/CustomButton/CustomButton'; // Asegúrate de ajustar la ruta
+import AudioControls from '../../components/AudioControls/AudioControls';
 
 // Array de imágenes con descripciones
 const imagenes = [
@@ -45,7 +47,16 @@ const GaleriaPage = () => {
                 <img src={RightArrow} alt="Siguiente" />
             </button>
         </div>
-        <img src={Dialogo} alt="Imagen adicional" className="bottom-image" />
+        <div className="bottom-part">
+    <img src={Dialogo} alt="Imagen adicional" className="bottom-image" />
+    <CustomButton text="¿Y si me armas?" onClick={() => console.log('Información')} />
+    
+</div>
+<div className="audio_bottom">
+<AudioControls />
+</div>
+
+       
     </div>
   );
 };
