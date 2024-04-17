@@ -62,3 +62,33 @@ html {
     align-items: center;
   }
   
+  
+  .audio-control, .custom-button {
+    margin-top: 20px;
+  }
+  
+  .bottom-image {
+    margin-top: 20px;
+  }
+
+  .buttonyAudio{
+    display: flex;
+  }
+
+  .bottom-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Asegura que el contenedor ocupe el ancho total de su contenedor padre */
+    /* position: absolute; Posicionamiento absoluto para situarlo correctamente */
+    bottom: 0; /* Alinea el contenedor en la parte inferior del contenedor padre */
+   
+}
+.audio_bottom{
+  position: absolute; 
+  width: 100%;
+  bottom: 0; /* Alinea el contenedor en la parte inferior del contenedor padre */
+}
+
+  
