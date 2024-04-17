@@ -1,0 +1,69 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;  /* Ajusta la altura según las necesidades */
+    background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); 
+}
+
+.top-section {
+    margin-top: 20px;
+}
+
+.middle-section {
+    flex-grow: 1;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+/* 
+.filmy-image {
+    margin-left: -160px;
+    max-width: 200%; 
+    margin-top: 60px;
+} */
+
+.bottom-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+.social-media-icons {
+    margin-top: 10px;
+}
+
+.filmy-image {
+    margin-left: auto; /* Centra la imagen horizontalmente */
+    margin-right: auto; /* Centra la imagen horizontalmente */
+    max-width: 100%; /* Evita que la imagen sea más ancha que su contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-top: 60px; /* Espacio superior */
+}
+
+@media (max-width: 414px) {
+    .filmy-image {
+        margin-left: -152px;
+        max-width: 200%; 
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 401px) {
+    .filmy-image {
+        margin-top: 15px; /* Aún menos espacio en pantallas muy pequeñas */
+        margin-left: -147px;
+    }
+}
+
+@media (max-width: 415px) {
+    .filmy-image {
+        margin-left: -160px;
+        max-width: 200%; 
+        margin-top: 25px;
+    }
+}
+
