@@ -1,0 +1,59 @@
+.prize-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(19, 6, 35, 0.7); 
+    opacity: 0.3; 
+  }
+
+  .overlay img{
+    width: 421px;
+    height: 900px;
+  }
+  
+  .popup {
+    position: relative;
+    padding: 35px;
+    border-radius: 10px;
+    background-color: rgba(57, 57, 57, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    width: 297px;
+    height: 410px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+  
+  .popup img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .popup p {
+    font-size: 16px;
+    margin: 15px 0;
+  }
+  
+  .download-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+  }
+  
