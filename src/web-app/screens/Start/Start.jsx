@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AvisoComponente from '../../components/Aviso/AvisoComponente';
 import LoadingAnimation from '../../components/LoadingAnimation/LoadingAnimation';
-import CustomButton from '../../components/CustomButton/CustomButton';
-import MapIcon from '../../components/CustomButton/assets/map.svg';
 import AudioControls from '../../components/AudioControls/AudioControls';
 import audioFile from './assets/audio1.mp3'; // Correct this path as needed
-import SquareWithContent from '../../components/SquareWithContent/SquareWithContent';
-import SocialMediaIcons from '../../components/SocialMediaIcons/SocialMediaIcons';
 import { useNavigate } from "react-router-dom";
 import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
 import TicketImage from './assets/Ticket.png'; 
