@@ -6,92 +6,93 @@ import LeftArrow from "./assets/left.svg";
 import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
+import AudioControls from "../../components/AudioControls/AudioControls";
 import { useNavigate } from "react-router-dom";
-import filmy from "./assets/SelcciónArchivosCompleta.gif";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
-  const [imagenes, setImagenes] = useState([]);
+  const [medios, setMedios] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function cargarImagenes() {
-      try {
-        const urls = await Promise.all([
-          obtenerImagenUrl("pentax/Foto 1 - Cataras del Niagara.png"),
-          obtenerImagenUrl("pentax/Foto 2 - Guitarra.png"),
-          obtenerImagenUrl("pentax/Foto 3 - Girasoles.png"),
-        ]);
-        setImagenes(
-          urls.map((url, index) => ({
-            src: url,
-            descripcion: `Descripción ${index + 1}`, // Puedes personalizar la descripción aquí
-          }))
-        );
-      } catch (error) {
-        console.error("Error al cargar imágenes:", error);
-      }
+    async function cargarMedios() {
+      const mediosInfo = [
+        { path: "pentax/Foto 1 - Cataras del Niagara.png", descripcion: "Fotógrafo: gmushinsky, Año: 2019, Cámara: Pentax K1000", tipo: 'imagen'  },
+      { path: "pentax/Foto 2 - Guitarra.png", descripcion: "Fotógrafo: fivedayforecast, Año: 2011, Cámara: Pentax K1000", tipo: 'imagen'  },
+      { path: "pentax/Foto 3 - Girasoles.png", descripcion: "Fotógrafo: bravopires, Año: 2013, Cámara: Pentax K1000" , tipo: 'imagen' },
+      { path: "pentax/Diapositiva astronomica.png", descripcion: "Diapositivas astronómicas mecánicas, Año: 1880, Autor: Baker of Holborn" ,tipo: 'imagen' },
+      { path: "pentax/Diapositiva indumentaria real.png", descripcion: "Diapositivas Indumentaria real, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
+      { path: "pentax/Diapositiva tribus africanas.png", descripcion: "Diapositivas colonias africanas, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
+      { path: "pentax/Tom and Jerry - Jolly Fish (1932-recortado).mp4", descripcion: "Fragmento de película: Tom y Jerry, Años: 1931, Autor: Amadee J. Van Beuren", tipo: 'video' },
+      { path: "pentax/high flyers (recortado).mp4", descripcion: "Fragmento de película: Abbott and Costello in High Flyers, Año: 1945, Autor: Castle Films", tipo: 'video' },
+      { path: "pentax/lion around.mp4", descripcion: "Fragmento de película: Donald Duck: Lion Around, Año:1950, Autor: Walt Disney", tipo: 'video' }
+      ];
+
+      const resultados = await Promise.all(
+        mediosInfo.map(item => obtenerImagenUrl(item.path))
+      );
+      setMedios(
+        resultados.map((url, index) => ({
+          src: url,
+          descripcion: mediosInfo[index].descripcion,
+          tipo: mediosInfo[index].tipo
+        }))
+      );
     }
-    cargarImagenes();
+
+    cargarMedios();
   }, []);
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => cambiarImagen("siguiente"),
-    onSwipedRight: () => cambiarImagen("anterior"),
+    onSwipedLeft: () => cambiarMedio("siguiente"),
+    onSwipedRight: () => cambiarMedio("anterior"),
   });
 
   const handleButtonClick = () => {
-    navigate("/objeto");
+    navigate("/puzzle");
   };
 
-  const cambiarImagen = (direccion) => {
+  const cambiarMedio = (direccion) => {
     if (direccion === "siguiente") {
-      setIndiceActivo((prevIndex) => (prevIndex + 1) % imagenes.length);
+      setIndiceActivo((prevIndex) => (prevIndex + 1) % medios.length);
     } else {
-      setIndiceActivo(
-        (prevIndex) => (prevIndex - 1 + imagenes.length) % imagenes.length
-      );
+      setIndiceActivo((prevIndex) => (prevIndex - 1 + medios.length) % medios.length);
     }
   };
 
-  if (!imagenes.length) return <div>Cargando imágenes...</div>;
+  if (!medios.length) return <div>Cargando medios...</div>;
 
   return (
     <div className="galeria-container">
       <div className="button-exit">
-        <button className="button-regresar">
-          <img src={butonback} onClick={handleButtonClick} />
+        <button className="button-regresar" onClick={handleButtonClick}>
+          <img src={butonback} alt="Regresar" />
         </button>
       </div>
       <div {...handlers} className="imagen-container">
-        <button onClick={() => cambiarImagen("anterior")} aria-label="Anterior">
+        <button onClick={() => cambiarMedio("anterior")} aria-label="Anterior">
           <img src={LeftArrow} alt="Anterior" />
         </button>
         <div className="image-and-description">
-          <img
-            src={imagenes[indiceActivo].src}
-            alt={`Imagen ${indiceActivo + 1}`}
-          />{" "}
-          <div className="descripcion">
-            {imagenes[indiceActivo].descripcion}
-          </div>
+          {medios[indiceActivo].tipo === 'imagen' ? (
+            <img src={medios[indiceActivo].src} alt={`Imagen ${indiceActivo + 1}`} />
+          ) : (
+            <video src={medios[indiceActivo].src} controls style={{ width: '100%' }} />
+          )}
+          <div className="descripcion">{medios[indiceActivo].descripcion}</div>
         </div>
-        <button
-          onClick={() => cambiarImagen("siguiente")}
-          aria-label="Siguiente"
-        >
+        <button onClick={() => cambiarMedio("siguiente")} aria-label="Siguiente">
           <img src={RightArrow} alt="Siguiente" />
         </button>
       </div>
-      <div className="filmy-galery">
-        <img src={filmy} alt="" />
-      <div className="button-armar">
-{/* <CustomButton text={"¿Y si me armas?"}/> */}
-      </div>
-      </div>
-
+      <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
+      <AudioControls/>
     </div>
   );
 };
 
 export default GaleriaPage;
+
+
+
+
