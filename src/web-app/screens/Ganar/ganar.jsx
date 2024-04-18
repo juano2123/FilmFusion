@@ -13,7 +13,7 @@ const Ganar = () => {
 const navigate = useNavigate();
 
 const handleButtonClick = () => {
-  navigate("/objeto");
+  navigate("/reclamarPremio");
 };
 
     return (

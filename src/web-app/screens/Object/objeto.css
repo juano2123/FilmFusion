@@ -20,4 +20,8 @@ html {
         color: white;
         font-family: sans-serif;
       }
+
+      .audio_obj{
+        z-index: 100;
+      }
       

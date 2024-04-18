@@ -49,7 +49,7 @@ const GaleriaPage = () => {
   });
 
   const handleButtonClick = () => {
-    navigate("/objeto");
+    navigate("/puzzle");
   };
 
   const cambiarMedio = (direccion) => {
