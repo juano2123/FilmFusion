@@ -67,13 +67,13 @@ const AudioControls = ({ audioSrc }) => {
       </div>
 
       <div className="control-buttons-container">
-        <button onClick={handleBackward} className="control-button">
+        <button onClick={handleBackward} className="control-buttonn">
           <BackwardIcon />
         </button>
-        <button onClick={togglePlayPause} className="control-button">
+        <button onClick={togglePlayPause} className="control-buttonn">
           {playing ? <PauseIcon /> : <PlayIcon />}
         </button>
-        <button onClick={handleForward} className="control-button">
+        <button onClick={handleForward} className="control-buttonn">
           <ForwardIcon />
         </button>
       </div>
