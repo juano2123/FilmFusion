@@ -1,94 +1,120 @@
 html {
-    height: 100%; 
-  }
-  
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-   
-  }
-
-  .galeria-container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
-  }
-  
-  .imagen-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .image-and-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .imagen-container button {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
-  
-  .imagen-container button img {
-    width: 20px; /* Ajusta el tamaño según necesites */
-    height: 30px;
-  }
-  
-  .imagen-container img {
-    width: 325px; /* Ajusta el tamaño según necesites */
-    height: 232px;
-    object-fit: cover;
-  }
-  
-  .descripcion {
-    color: #fff;
-    font-size: 16px;
-    margin-top: 8px;
-    text-align: center;
-    font-family: sans-serif;
-  }
-
-  .bottom-image {
-    width: 70%; /* O cualquier otro tamaño que prefieras */
-    display: block; /* Esto asegura que no haya espacio extra alrededor de la imagen */
-    margin-top: 20px; /* Espacio entre la galería y la imagen adicional */
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  .audio-control, .custom-button {
-    margin-top: 20px;
-  }
-  
-  .bottom-image {
-    margin-top: 20px;
-  }
-
-  .buttonyAudio{
-    display: flex;
-  }
-
-  .bottom-part {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Asegura que el contenedor ocupe el ancho total de su contenedor padre */
-    /* position: absolute; Posicionamiento absoluto para situarlo correctamente */
-    bottom: 0; /* Alinea el contenedor en la parte inferior del contenedor padre */
-   
+  height: 100%;
 }
-.audio_bottom{
-  position: absolute; 
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+.galeria-container {
+display: flex;
+  height: 100vh;
+  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
+}
+
+.imagen-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagen-container button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.imagen-container button img {
+  width: 20px;
+  /* Ajusta el tamaño según necesites */
+  height: 30px;
+}
+
+.imagen-container img {
+  width: 325px;
+  /* Ajusta el tamaño según necesites */
+  height: 232px;
+  object-fit: cover;
+}
+
+.descripcion {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 8px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.bottom-image {
+  width: 70%;
+  /* O cualquier otro tamaño que prefieras */
+  display: block;
+  /* Esto asegura que no haya espacio extra alrededor de la imagen */
+  margin-top: 20px;
+  /* Espacio entre la galería y la imagen adicional */
+  justify-content: center;
+  align-items: center;
+}
+
+
+.audio-control,
+.custom-button {
+  margin-top: 20px;
+}
+
+.bottom-image {
+  margin-top: 20px;
+}
+
+.buttonyAudio {
+  display: flex;
+}
+
+.bottom-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  bottom: 0; /* Alinea el contenedor en la parte inferior del contenedor padre */
+  /* Asegura que el contenedor ocupe el ancho total de su contenedor padre */
+  /* position: absolute; Posicionamiento absoluto para situarlo correctamente */
+  bottom: 0;
+  /* Alinea el contenedor en la parte inferior del contenedor padre */
+
 }
 
-  
+.audio_bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.button-exit {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: start;
+}
+.filmy-galery{
+        
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed; 
+  top: 85%; 
+  left: 78%; 
+  transform: translate(-50%, -50%);
+  width: 246vw; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+  height: 100vh;
+  z-index: 1001;
+}
