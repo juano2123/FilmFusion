@@ -59,7 +59,7 @@ const GaleriaPage = () => {
   return (
     <div className="galeria-container">
       <div className="button-exit">
-        <button>
+        <button className="button-regresar">
           <img src={butonback} onClick={handleButtonClick} />
         </button>
       </div>
