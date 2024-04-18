@@ -6,6 +6,7 @@ import LeftArrow from "./assets/left.svg";
 import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
+import AudioControls from "../../components/AudioControls/AudioControls";
 import { useNavigate } from "react-router-dom";
 
 const GaleriaPage = () => {
@@ -85,6 +86,7 @@ const GaleriaPage = () => {
         </button>
       </div>
       <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
+      <AudioControls/>
     </div>
   );
 };
