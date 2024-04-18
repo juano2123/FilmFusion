@@ -5,9 +5,9 @@ const CustomButton = ({ text, color, size, fontFamily, border, outline, imageUrl
   const styles = {
     backgroundColor: color,
     // Establece el tamaño basado en la prop size
-    width: size === 'large' ? '315px' : size === 'medium' ? '179px' : '150px',
-    height: size === 'large' ? '89px' : size === 'medium' ? '51px' : '43px',
-    fontSize: size === 'large' ? '20px' : size === 'medium' ? '16px' : '14px',
+    width: size === 'large' ? '315px' : size === 'medium' ? '179px' : '170px',
+    height: size === 'large' ? '89px' : size === 'medium' ? '51px' : '50px',
+    fontSize: size === 'large' ? '20px' : size === 'medium' ? '19px' : '18px',
     fontFamily: fontFamily || 'sans-serif', // Asegúrate de aplicar fontFamily correctamente
     outline: outline || 'none',
   };

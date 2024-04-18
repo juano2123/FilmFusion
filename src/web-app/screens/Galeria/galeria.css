@@ -1,24 +1,34 @@
-html {
-  height: 100%;
-}
-
-body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-
 }
 
 .galeria-container {
-display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   height: 100vh;
   background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
+}
+
+.button-exit {
+  align-self: flex-start; /* Alinea el botón al inicio del eje principal */
+  padding: 20px; /* Espacio para no pegar el botón al borde */
+  background-color: transparent;
+}
+
+.button-exit button {
+  background-color: transparent;
 }
 
 .imagen-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  margin-top: 20px; /* Espacio entre el botón de salida y el contenedor de imagen */
 }
 
 .image-and-description {
@@ -35,20 +45,18 @@ display: flex;
 
 .imagen-container button img {
   width: 20px;
-  /* Ajusta el tamaño según necesites */
   height: 30px;
 }
 
 .imagen-container img {
-  width: 325px;
-  /* Ajusta el tamaño según necesites */
+  width: 325px; /* Controla el tamaño de la imagen */
   height: 232px;
   object-fit: cover;
 }
 
 .descripcion {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 8px;
   text-align: center;
   font-family: sans-serif;
@@ -56,80 +64,33 @@ display: flex;
 
 .bottom-image {
   width: 70%;
-  /* O cualquier otro tamaño que prefieras */
   display: block;
-  /* Esto asegura que no haya espacio extra alrededor de la imagen */
   margin-top: 20px;
-  /* Espacio entre la galería y la imagen adicional */
-  justify-content: center;
-  align-items: center;
+  align-self: center;
 }
 
-
-.audio-control,
-.custom-button {
-  margin-top: 20px;
-}
-
-.bottom-image {
-  margin-top: 20px;
-}
-
-.buttonyAudio {
-  display: flex;
-}
-
-.bottom-part {
+.filmy-galery {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-  /* Asegura que el contenedor ocupe el ancho total de su contenedor padre */
-  /* position: absolute; Posicionamiento absoluto para situarlo correctamente */
-  bottom: 0;
-  /* Alinea el contenedor en la parte inferior del contenedor padre */
-
-}
-
-.audio_bottom {
   position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-
-.button-exit {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: start;
-  padding-top: 2vh;
-  padding-left: 2vh;
-}
-.button-regresar{
-  display: flex;
-  background: black;
-  border-radius: 2vh;
-  padding: 5px;
-  padding-inline: 19px;
-}
-
-.filmy-galery{
-        
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed; 
-  top: 85%; 
-  left: 78%; 
+  top: 85%;
+  left: 78%;
   transform: translate(-50%, -50%);
-  width: 246vw; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+  width: 100%;
   height: 100vh;
   z-index: 1001;
 }
 
-.button-armar{ display: flex;
+.button-armar {
+  display: flex;
   height: 100vh;
-  z-index: 1000 ;
+  z-index: 1000;
+}
+
+/* Asegura que los botones y controles de audio estén debajo de la galería */
+.audio_bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
