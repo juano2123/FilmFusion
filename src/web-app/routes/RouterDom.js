@@ -7,14 +7,17 @@ import GanarPage from "../screens/Ganar/ganar"
 import PuzzlePage from "../screens/Puzzle/puzzle";
 import PrizePage from "../screens/ReclamarPremio/reclamarPremio";
 
+
 const RouterDom = () => {
   return (
     <Routes>
-      <Route path="/" element={<Start />} />
-      <Route path="/objeto" element={<ObjetoPage />} /> {/* Nueva ruta agregada */}
+        {/* <Route path="/" element={<Start />} /> */}
+      <Route path="/" element={<ObjetoPage />} /> {/* Nueva ruta agregada */}
       <Route path="/galeria" element={<GaleriaPage />} /> 
       <Route path="/ganar" element={<GanarPage />} /> 
       <Route path="/puzzle" element={<PuzzlePage />} /> 
+      <Route path="/Start" element={<Start />} /> 
+
       {/* <Route path="/ganar" element={<GanarPage />} />  */}
       <Route path="/reclamarPremio" element={<PrizePage />} /> 
       <Route path="/*" element={<Navigate to="/" />} />

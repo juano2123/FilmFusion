@@ -84,3 +84,16 @@ body {
   }
 }
 
+.filmyy{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed; 
+    top: 88%; 
+    left: 5%; 
+    transform: translate(-50%, -50%);
+    width: 246vw; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+    height: 100vh;
+    z-index: 1001;
+}
+

@@ -1,14 +1,20 @@
 /* AudioControls.css */
 
 .audio-controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: grid;
-    align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.45);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.45); 
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+    z-index: 10;
 }
 
-.control-button {
+.control-buttonn {
     background: none;
     border: none;
     cursor: pointer;
@@ -16,7 +22,7 @@
     
 }
 
-.control-button svg {
+.control-buttonn svg {
     fill: #000;
     width: 40px;
     height: 40px;

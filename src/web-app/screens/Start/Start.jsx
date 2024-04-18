@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
 import TicketImage from './assets/Ticket.png'; 
 import './Start.css';
+import filmy from "./assets/BienvenidaCompleta.gif"
 
 const Start = () => {
   const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);
@@ -52,7 +53,12 @@ const Start = () => {
             <p className="overlay-text">Acompáñame en este recorrido y prepárate para una sorpresa final.</p>
             <p className="overlay-text">Recuerda ponerte tus audífonos para una mejor experiencia.</p>
           </div>
+          <div className='filmyy'>
+        <img src={filmy} alt="" />
+
+          </div>
         </div>
+        
         <AudioControls audioSrc={audioFile1} />
       </div>
     </div>

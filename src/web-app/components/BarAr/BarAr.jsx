@@ -18,7 +18,7 @@ function BarAr() {
       <div className="toggle-container" onClick={handleToggleChange}>
         {/* Botón del Toggle, cambia de clase y texto según el estado */}
         <div className={`toggle-btn ${!toggle ? "disable" : ""}`}>
-          {toggle ? "Object" : "AR"}
+          {toggle ? "AR" : "Objeto"}
         </div>
       </div>
     </div>

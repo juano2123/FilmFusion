@@ -3,17 +3,24 @@ import './reclamarPremio.css';  // Asegúrate de tener este archivo CSS
 import backgroundImage from './assets/Group 30.png'; // Cambia la ruta a tu imagen de fondo
 import prizeImage from './assets/Mapa.png';  // Cambia la ruta a tu imagen del premio
 import Descargar from './assets/Descargar.svg';
+import { guardarNumero } from '../../firebase/config';
 
 function PrizeScreen() {
   const [prizeCode, setPrizeCode] = useState('');
 
   useEffect(() => {
-    setPrizeCode(Math.floor(1000 + Math.random() * 9000).toString());
+    const newPrizeCode = Math.floor(1000 + Math.random() * 9000).toString();
+    setPrizeCode(newPrizeCode);
+    guardarNumero('/premios', newPrizeCode);// Guarda el código en la base de datos
+
   }, []);
 
   const handleDownloadClick = () => {
     console.log("Descargar la imagen o información del premio");
   };
+
+
+
 
   return (
     <div className="prize-screen" >
