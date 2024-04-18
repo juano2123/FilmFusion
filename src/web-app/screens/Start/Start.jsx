@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
 import TicketImage from './assets/Ticket.png'; 
 import './Start.css';
-import filmy from "./assets/BienvenidaCompleta.gif"
+import filmy from "./assets/BienvenidaNoDialogo.gif"
 
 const Start = () => {
   const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);

@@ -8,6 +8,7 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import { useNavigate } from "react-router-dom";
+import filmy from "./assets/Sin título-1.svg"
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
@@ -85,7 +86,11 @@ const GaleriaPage = () => {
           <img src={RightArrow} alt="Siguiente" />
         </button>
       </div>
-      <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
+     < div className='filmy-galery'>
+        <img src={filmy} alt="" />
+        <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
+
+          </div>
       <AudioControls/>
     </div>
   );

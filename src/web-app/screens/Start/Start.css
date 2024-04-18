@@ -1,6 +1,7 @@
 /* Start.css */
 html {
   height: 100%; 
+  
 }
 
 body {
@@ -32,6 +33,7 @@ body {
 }
 .image-overlay-container {
   position: relative;
+  padding-bottom: 8vh;
 }
 
 .text-overlay {
@@ -89,11 +91,11 @@ body {
     flex-direction: column;
     justify-content: center;
     position: fixed; 
-    top: 88%; 
-    left: 5%; 
+    top: 84vh; 
+    left: -3vh; 
     transform: translate(-50%, -50%);
-    width: 246vw; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+    width: 116vh; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
     height: 100vh;
-    z-index: 1001;
+    z-index: 10;
 }
 
