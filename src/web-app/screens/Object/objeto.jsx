@@ -4,6 +4,7 @@ import Ar from "../../components/AR/Ar.jsx";
 import BarAr from "../../components/BarAr/BarAr.jsx";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import Showgalery from "../../components/ShowGalery/Showgalery.jsx";
+import filmy from "./assets/SelcciónArchivosCompleta.gif"
 
 const ObjetoPage = () => {
   return (

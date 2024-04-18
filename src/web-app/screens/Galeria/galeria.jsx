@@ -7,7 +7,7 @@ import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import { useNavigate } from "react-router-dom";
-import filmy from "./assets/SelcciónArchivosCompleta.gif"
+import filmy from "./assets/SelcciónArchivosCompleta.gif";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
@@ -39,10 +39,10 @@ const GaleriaPage = () => {
     onSwipedLeft: () => cambiarImagen("siguiente"),
     onSwipedRight: () => cambiarImagen("anterior"),
   });
-  
-const handleButtonClick = () => {
-  navigate("/objeto");
-};
+
+  const handleButtonClick = () => {
+    navigate("/objeto");
+  };
 
   const cambiarImagen = (direccion) => {
     if (direccion === "siguiente") {
@@ -60,7 +60,7 @@ const handleButtonClick = () => {
     <div className="galeria-container">
       <div className="button-exit">
         <button>
-        <img src= {butonback} onClick={handleButtonClick}/> 
+          <img src={butonback} onClick={handleButtonClick} />
         </button>
       </div>
       <div {...handlers} className="imagen-container">
@@ -83,10 +83,13 @@ const handleButtonClick = () => {
           <img src={RightArrow} alt="Siguiente" />
         </button>
       </div>
-      <div className='filmy-galery'>
+      <div className="filmy-galery">
         <img src={filmy} alt="" />
+      <div className="button-armar">
+{/* <CustomButton text={"¿Y si me armas?"}/> */}
+      </div>
+      </div>
 
-          </div>
     </div>
   );
 };
