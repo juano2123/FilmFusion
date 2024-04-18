@@ -1,7 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getDatabase, ref as dbRef, set } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,9 +18,9 @@ const firebaseConfig = {
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const storage = getStorage(app);
-
+const database = getDatabase(app);
+  
 /**
  * @param {string} nombreArchivo El nombre del archivo en el storage.
  * @returns {Promise<string>} La URL del archivo.
@@ -38,6 +37,23 @@ async function obtenerImagenUrl(nombreArchivo) {
     throw error; 
   }
 }
+/**
+ * Guarda un número en Firebase Realtime Database.
+ * 
+ * @param {string} path La ruta en la base de datos donde se guardará el número.
+ * @param {number} numero El número a guardar.
+ */
+function guardarNumero(path, numero,tok) {
+  const reference = dbRef(database, path);
+  set(reference, {
+    numero: numero
+  }).then(() => {
+    console.log('Número guardado con éxito!');
+  }).catch((error) => {
+    console.error('Error guardando el número:', error);
+  });
+}
 
+export { obtenerImagenUrl, guardarNumero };
 
-export default obtenerImagenUrl;
+export default obtenerImagenUrl ;
