@@ -6,6 +6,7 @@ import AudioControls from "../../components/AudioControls/AudioControls";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { useNavigate } from "react-router-dom";
 import AvisoAR from "../../components/AvisoAR/AvisoAR.jsx"; // Asegúrate de importar correctamente
+import Gallery from "../../components/Gallery/Gallery.jsx";
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const ObjetoPage = () => {
         <BarAr></BarAr>
       </div>
       <div className="galeria">
-          {/* <Showgalery/> */}
+      <Gallery></Gallery>
       </div>
       <div className="obj-3D">
         <Ar></Ar>

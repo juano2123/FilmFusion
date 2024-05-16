@@ -8,6 +8,13 @@ html {
     padding: 0;
    
   }
+
+  .galeria{
+    display: flex;
+    position: fixed;
+    top: 60px;
+    left: -2px;
+  }
   .objeto-container{
         display: grid; 
         justify-content: center; /* Centra el contenido horizontalmente */
