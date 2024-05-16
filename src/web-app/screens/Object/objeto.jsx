@@ -39,7 +39,7 @@ const ObjetoPage = () => {
         {showAviso && <AvisoAR onClose={handleCloseAviso} />} {/* Componente de aviso que se muestra según el estado */}
       </div>
       <div className="audio_obj">
-        <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black"/>
+        {/* <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black"/> */}
         <AudioControls></AudioControls>
       </div>
     </div>
