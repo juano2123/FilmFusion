@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BarAR from '../../components/BarAr/BarAr';
 import MissingObject from '../../components/MissingObject/missingObject';
 import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
+import { DragAndDropProvider } from '../../components/Draggable/DragAndDropContext'; // Importa el proveedor de contexto
 
 import flashImage from './assets/FLASH.png';
 import lenteImage from './assets/LENTE.png';
@@ -22,36 +23,44 @@ const Puzzle = () => {
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [remainingImages, setRemainingImages] = useState(initialImages);
 
-  const handleDrop = (draggedId) => {
-    const imageExists = remainingImages.some(image => image.id === draggedId);
-    if (imageExists) {
+  const handleDrop = (draggedId, dropZoneId) => {
+    const correctMapping = {
+      'flash-drop': 'flash',
+      'lente-drop': 'lente',
+      'rollo-drop': 'rollo'
+    };
+
+    console.log(`handleDrop - DropZone ID: ${dropZoneId} - Dragged ID: ${draggedId}`);
+    
+    if (correctMapping[dropZoneId] === draggedId) {
       setRemainingImages(prev => prev.filter(image => image.id !== draggedId));
-      setFeedbackMessage('');
+      setFeedbackMessage('¡Correcto!');
     } else {
       setFeedbackMessage('Incorrecto. Intenta de nuevo.');
     }
   };
 
   return (
-    <div className="puzzle-container">
-      <div className="ar-button-container">
-        <BarAR text="Activate AR" />
+    <DragAndDropProvider>
+      <div className="puzzle-container">
+        <div className="ar-button-container">
+          <BarAR text="Activate AR" />
+        </div>
+        <div className="object-3d-wrapper">
+          <DraggableCamera
+            srcClosed={camaraClosed}
+            srcTurned={camaraTurned}
+            srcOpen={camaraOpen}
+            onDrop={handleDrop}
+          />
+        </div>
+        <div className="missing-object-container">
+          <MissingObject images={remainingImages} onDrop={handleDrop} />
+        </div>
+        <div className="feedback-message">{feedbackMessage}</div>
       </div>
-      <div className="object-3d-wrapper">
-        <DraggableCamera
-          srcClosed={camaraClosed}
-          srcTurned={camaraTurned}
-          srcOpen={camaraOpen}
-          onDrop={handleDrop}
-        />
-      </div>
-      <div className="missing-object-container">
-        <MissingObject images={remainingImages} onDrop={handleDrop} />
-      </div>
-      <div className="feedback-message">{feedbackMessage}</div>
-    </div>
+    </DragAndDropProvider>
   );
 };
 
 export default Puzzle;
-

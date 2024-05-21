@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
+import { useDragAndDropContext } from './DragAndDropContext'; // Importa el contexto
 
 const Draggable = ({ id, src, onDrop }) => {
+  const { setDraggedId, activeDropZone, setActiveDropZone } = useDragAndDropContext();
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [originalPosition, setOriginalPosition] = useState({ x: 0, y: 0 });
@@ -10,7 +12,8 @@ const Draggable = ({ id, src, onDrop }) => {
     const touch = e.touches[0];
     setOriginalPosition({ x: touch.clientX, y: touch.clientY });
     setIsDragging(true);
-    e.target.setAttribute('data-dragged-id', id); // Establecer el ID del elemento arrastrado como atributo de datos
+    setDraggedId(id);
+    console.log(`TouchStart - Dragging ID: ${id}`);
   };
 
   const handleTouchMove = (e) => {
@@ -30,8 +33,10 @@ const Draggable = ({ id, src, onDrop }) => {
 
   const handleTouchEnd = (e) => {
     setIsDragging(false);
-    const draggedId = e.target.getAttribute('data-dragged-id');
-    onDrop(draggedId, position);
+    console.log(`TouchEnd - Dropped ID: ${id}, DropZone ID: ${activeDropZone}`);
+    if (activeDropZone !== null) {
+      onDrop(id, activeDropZone);
+    }
     setPosition({ x: 0, y: 0 });
   };
 
@@ -39,14 +44,14 @@ const Draggable = ({ id, src, onDrop }) => {
     <div
       ref={imgRef}
       style={{
-        position: 'relative', // Cambiar a 'absolute' para permitir el movimiento fuera del contenedor
+        position: 'relative',
         left: position.x,
         top: position.y,
         cursor: 'pointer',
         touchAction: 'none',
         opacity: isDragging ? 0.5 : 1,
-        width: '120px', // Ajustar para incluir padding y borde
-        height: '120px', // Ajustar para incluir padding y borde
+        width: '120px',
+        height: '120px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -68,4 +73,3 @@ const Draggable = ({ id, src, onDrop }) => {
 };
 
 export default Draggable;
-
