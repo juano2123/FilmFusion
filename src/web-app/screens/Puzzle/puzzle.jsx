@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
 import BarAR from '../../components/BarAr/BarAr';
-import DropZone from '../../components/DropZone/DropZone';
 import MissingObject from '../../components/MissingObject/missingObject';
+import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
 
 import flashImage from './assets/FLASH.png';
 import lenteImage from './assets/LENTE.png';
 import rolloImage from './assets/ROLLO.png';
-import camara from './assets/camara.png';
+import camaraClosed from './assets/camara.png'; // Imagen de la cámara cerrada
+import camaraTurned from './assets/Cuerpo_atras.png';
+import camaraOpen from './assets/Abierto.png'; // Imagen de la cámara abierta
 
 import './puzzle.css';
 
 const Puzzle = () => {
-  const images = [
+  const initialImages = [
     { id: 'flash', src: flashImage },
     { id: 'lente', src: lenteImage },
     { id: 'rollo', src: rolloImage }
   ];
 
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  const [droppedItems, setDroppedItems] = useState({});
+  const [remainingImages, setRemainingImages] = useState(initialImages);
 
-  const handleDrop = (draggedId, targetId) => {
-    if (draggedId === targetId) {
-      setFeedbackMessage('¡Correcto! Has colocado el componente correctamente.');
-      setDroppedItems(prev => ({ ...prev, [targetId]: true }));
+  const handleDrop = (draggedId) => {
+    const imageExists = remainingImages.some(image => image.id === draggedId);
+    if (imageExists) {
+      setRemainingImages(prev => prev.filter(image => image.id !== draggedId));
+      setFeedbackMessage('');
     } else {
       setFeedbackMessage('Incorrecto. Intenta de nuevo.');
     }
@@ -34,19 +37,16 @@ const Puzzle = () => {
       <div className="ar-button-container">
         <BarAR text="Activate AR" />
       </div>
-      <div className="object-3d-container" style={{ backgroundImage: `url(${camara})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', width: '500px', height: '500px' }}>
-        <DropZone id="flash" onDrop={handleDrop}>
-          {droppedItems['flash'] && <img src={flashImage} alt="flash" style={{ width: '100px' }} />}
-        </DropZone>
-        <DropZone id="lente" onDrop={handleDrop}>
-          {droppedItems['lente'] && <img src={lenteImage} alt="lente" style={{ width: '100px' }} />}
-        </DropZone>
-        <DropZone id="rollo" onDrop={handleDrop}>
-          {droppedItems['rollo'] && <img src={rolloImage} alt="rollo" style={{ width: '100px' }} />}
-        </DropZone>
+      <div className="object-3d-wrapper">
+        <DraggableCamera
+          srcClosed={camaraClosed}
+          srcTurned={camaraTurned}
+          srcOpen={camaraOpen}
+          onDrop={handleDrop}
+        />
       </div>
       <div className="missing-object-container">
-        <MissingObject images={images} />
+        <MissingObject images={remainingImages} onDrop={handleDrop} />
       </div>
       <div className="feedback-message">{feedbackMessage}</div>
     </div>
@@ -54,3 +54,4 @@ const Puzzle = () => {
 };
 
 export default Puzzle;
+

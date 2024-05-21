@@ -1,26 +1,21 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-const DropZone = ({ id, onDrop, children }) => {
-  const dropZoneRef = useRef(null);
+const DropZone = ({ id, onDrop, children, style }) => {
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const draggedId = event.dataTransfer.getData('text');
+    onDrop(draggedId, id);
+  };
 
-  const handleDrop = (itemId, position) => {
-    const dropZone = dropZoneRef.current.getBoundingClientRect();
-    const isInDropZone =
-      position.x >= dropZone.left &&
-      position.x <= dropZone.right &&
-      position.y >= dropZone.top &&
-      position.y <= dropZone.bottom;
-
-    if (isInDropZone) {
-      onDrop(itemId, id);
-    }
+  const handleDragOver = (event) => {
+    event.preventDefault();
   };
 
   return (
     <div
-      ref={dropZoneRef}
-      className="dropzone"
-      style={{ border: '2px dashed #ccc', width: '100px', height: '100px', position: 'absolute' }}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      style={{ position: 'absolute', ...style }}
     >
       {children}
     </div>
@@ -28,4 +23,3 @@ const DropZone = ({ id, onDrop, children }) => {
 };
 
 export default DropZone;
-

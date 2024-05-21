@@ -10,6 +10,7 @@ const Draggable = ({ id, src, onDrop }) => {
     const touch = e.touches[0];
     setOriginalPosition({ x: touch.clientX, y: touch.clientY });
     setIsDragging(true);
+    e.target.setAttribute('data-dragged-id', id); // Establecer el ID del elemento arrastrado como atributo de datos
   };
 
   const handleTouchMove = (e) => {
@@ -29,7 +30,8 @@ const Draggable = ({ id, src, onDrop }) => {
 
   const handleTouchEnd = (e) => {
     setIsDragging(false);
-    onDrop(id, position);
+    const draggedId = e.target.getAttribute('data-dragged-id');
+    onDrop(draggedId, position);
     setPosition({ x: 0, y: 0 });
   };
 
@@ -37,21 +39,17 @@ const Draggable = ({ id, src, onDrop }) => {
     <div
       ref={imgRef}
       style={{
-        position: 'relative',
+        position: 'relative', // Cambiar a 'absolute' para permitir el movimiento fuera del contenedor
         left: position.x,
         top: position.y,
         cursor: 'pointer',
         touchAction: 'none',
         opacity: isDragging ? 0.5 : 1,
-        width: '120px', // Adjusted to include padding and border
-        height: '120px', // Adjusted to include padding and border
+        width: '120px', // Ajustar para incluir padding y borde
+        height: '120px', // Ajustar para incluir padding y borde
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // border: '2px solid #ccc',
-        // borderRadius: '10px',
-        // backgroundColor: '#f9f9f9',
-        // padding: '5px'
       }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -62,6 +60,7 @@ const Draggable = ({ id, src, onDrop }) => {
         alt={id}
         style={{
           width: '100px',
+          zIndex: 1,
         }}
       />
     </div>
@@ -69,3 +68,4 @@ const Draggable = ({ id, src, onDrop }) => {
 };
 
 export default Draggable;
+
