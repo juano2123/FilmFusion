@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import BarAR from '../../components/BarAr/BarAr';
 import MissingObject from '../../components/MissingObject/missingObject';
 import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
@@ -11,6 +12,8 @@ import camaraClosed from './assets/camara.png'; // Imagen de la cámara cerrada
 import camaraTurned from './assets/Cuerpo_atras.png';
 import camaraOpen from './assets/Abierto.png'; // Imagen de la cámara abierta
 
+
+
 import './puzzle.css';
 
 const Puzzle = () => {
@@ -22,6 +25,15 @@ const Puzzle = () => {
 
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [remainingImages, setRemainingImages] = useState(initialImages);
+  const navigate = useNavigate(); // Hook para navegar a otra página
+
+
+  useEffect(() => {
+    if (remainingImages.length === 0) {
+      navigate('/ganar'); // Redirige a la página de ganar
+    }
+  }, [remainingImages, navigate]);
+
 
   const handleDrop = (draggedId, dropZoneId) => {
     const correctMapping = {
@@ -34,9 +46,9 @@ const Puzzle = () => {
     
     if (correctMapping[dropZoneId] === draggedId) {
       setRemainingImages(prev => prev.filter(image => image.id !== draggedId));
-      setFeedbackMessage('¡Correcto!');
+      // setFeedbackMessage('¡Correcto!');
     } else {
-      setFeedbackMessage('Incorrecto. Intenta de nuevo.');
+      setFeedbackMessage('Lo siento, creo que ahí no iba, inténtalo de nuevo');
     }
   };
 
@@ -54,10 +66,10 @@ const Puzzle = () => {
             onDrop={handleDrop}
           />
         </div>
+        <div className="feedback-message">{feedbackMessage}</div>
         <div className="missing-object-container">
           <MissingObject images={remainingImages} onDrop={handleDrop} />
         </div>
-        <div className="feedback-message">{feedbackMessage}</div>
       </div>
     </DragAndDropProvider>
   );

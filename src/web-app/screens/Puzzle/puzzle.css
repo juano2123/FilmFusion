@@ -64,7 +64,7 @@ body {
 
 .rectangle-container {
   width: 391px;
-  height: 103px;
+  height: 120px;
   border-radius: 15px;
   background-color: rgba(57, 57, 57, 0.7);
   /* Color #393939 con opacidad del 70% */
@@ -89,10 +89,18 @@ body {
 }
 
 .feedback-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   font-size: 1.2em;
-  color: #333;
+  color: #ffffff; /* Letras blancas */
+  background-color: rgba(0, 0, 0, 0.25); /* Fondo negro con opacidad de 64 */
+  padding: 10px; /* Añadir padding para mejorar la apariencia */
+  border-radius: 5px; /* Bordes redondeados para mejor estética */
+  font-family: sans-serif;
 }
+
 
 .object-3d-wrapper {
   position: relative;
