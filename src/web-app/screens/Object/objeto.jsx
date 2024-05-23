@@ -6,11 +6,14 @@ import AudioControls from "../../components/AudioControls/AudioControls";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { useNavigate } from "react-router-dom";
 import AvisoAR from "../../components/AvisoAR/AvisoAR.jsx"; // Asegúrate de importar correctamente
+import { useSelector } from 'react-redux';
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
   const [showAviso, setShowAviso] = useState(false); // Estado para controlar la visibilidad del aviso
+  const id = useSelector((state) => state.id.value);
 
+console.log(id)
   const handleButtonClick = () => {
     navigate("/galeria");
   };
@@ -41,6 +44,7 @@ const ObjetoPage = () => {
         <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black"/>
         <AudioControls></AudioControls>
       </div>
+      <p>{id}</p>
     </div>
   );
 };
