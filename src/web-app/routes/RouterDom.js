@@ -1,7 +1,7 @@
 // src/web-app/routes/RouterDom.js
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Start from "../screens/Start/Start";
 import ObjetoPage from "../screens/Object/objeto"; // Asegúrate de que la ruta de importación sea correcta
 import GaleriaPage from "../screens/Galeria/galeria";
@@ -17,12 +17,15 @@ const useQuery = () => {
 const RouterDom = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const query = useQuery();
+  const initialized = useSelector((state) => state.id.initialized);
 
   useEffect(() => {
-    const query = new URLSearchParams(location.search);
-    const newId = query.get('id');
-    dispatch(setId(newId));
-  }, [location, dispatch]);
+    if (!initialized) {
+      const newId = query.get('id');
+      dispatch(setId(newId));
+    }
+  }, [location, dispatch, query, initialized]);
 
   return (
     <Routes>

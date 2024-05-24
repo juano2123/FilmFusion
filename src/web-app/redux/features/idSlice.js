@@ -8,7 +8,9 @@ export const idSlice = createSlice({
   },
   reducers: {
     setId: (state, action) => {
-      state.value = action.payload;
+      if (state.value === null) {
+        state.value = action.payload;
+      }
     },
   },
 });

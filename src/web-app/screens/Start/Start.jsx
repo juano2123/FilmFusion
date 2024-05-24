@@ -9,11 +9,14 @@ import TicketImage from './assets/Ticket.png';
 import './Start.css';
 import filmy from "./assets/BienvenidaNoDialogo.gif"
 import { useSelector } from 'react-redux';
+import { obtenerImgs, obtenerimgs } from '../../firebase/config';
 
 const Start = () => {
   const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);
   const [mostrarCarga, setMostrarCarga] = useState(true);
   const id = useSelector((state) => state.id.value);
+
+  
 console.log(id)
   useEffect(() => {
     const handleResize = () => {
