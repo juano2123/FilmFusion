@@ -12,8 +12,8 @@ import filmy from "./assets/Sin título-1.svg"
 import { useSelector } from "react-redux";
 
 const GaleriaPage = () => {
-  // const [indiceActivo, setIndiceActivo] = useState(0);
-  // const [medios, setMedios] = useState([]);
+  const [indiceActivo, setIndiceActivo] = useState(0);
+
   const navigate = useNavigate();
 
   const [datos, setDatos] = useState([]);;
@@ -65,59 +65,64 @@ console.log(datos)
   //   cargarMedios();
   // }, []);
 
-  // const handlers = useSwipeable({
-  //   onSwipedLeft: () => cambiarMedio("siguiente"),
-  //   onSwipedRight: () => cambiarMedio("anterior"),
-  // });
+  const handlers = useSwipeable({
+    onSwipedLeft: () => cambiarMedio("siguiente"),
+    onSwipedRight: () => cambiarMedio("anterior"),
+  });
 
   const handleButtonClick = () => {
     navigate("/puzzle");
   };
 
-  // const cambiarMedio = (direccion) => {
-  //   if (direccion === "siguiente") {
-  //     setIndiceActivo((prevIndex) => (prevIndex + 1) % medios.length);
-  //   } else {
-  //     setIndiceActivo((prevIndex) => (prevIndex - 1 + medios.length) % medios.length);
-  //   }
-  // };
+  const cambiarMedio = (direccion) => {
+    setIndiceActivo((prevIndex) => {
+      if (direccion === "siguiente") {
+        return (prevIndex + 1) % datos.length;
+      } else {
+        return (prevIndex - 1 + datos.length) % datos.length;
+      }
+    });
+  };
 
   // if (!medios.length) return <div>Cargando medios...</div>;
 
   return (
-    <div className="galeria-container">
+    <div className="galeria-container" {...handlers}>
       <div className="button-exit">
         <button className="button-regresar" onClick={handleButtonClick}>
           <img src={butonback} alt="Regresar" />
         </button>
       </div>
-      <div  className="imagen-container">
-        {/* <button onClick={() => cambiarMedio("anterior")} aria-label="Anterior">
+      <div className="imagen-container">
+        <button onClick={() => cambiarMedio("anterior")} aria-label="Anterior">
           <img src={LeftArrow} alt="Anterior" />
-        </button> */}
+        </button>
         <div className="image-and-description">
-        {datos.length > 0 ? (
-            datos.map((item, index) => (
-              <div key={index} className="medio">
-                <img src={item.img} alt={item.descripcion} />
-                <p>{item.descripcion}</p>
-              </div>
-            ))
+          {datos.length > 0 ? (
+            <div className="medio">
+              {datos[indiceActivo].type === 'imagen' ? (
+                <img src={datos[indiceActivo].img} alt={datos[indiceActivo].descripcion} className="media-element" />
+              ) : (
+                <video controls className="media-element">
+                  <source src={datos[indiceActivo].img} type="video/mp4" />
+                  Tu navegador no soporta la etiqueta de video.
+                </video>
+              )}
+              <p className="descripcion">{datos[indiceActivo].descripcion}</p>
+            </div>
           ) : (
             <p>Cargando...</p>
           )}
-          {/* <div className="descripcion">{medios[indiceActivo].descripcion}</div> */}
         </div>
-        {/* <button onClick={() => cambiarMedio("siguiente")} aria-label="Siguiente">
+        <button onClick={() => cambiarMedio("siguiente")} aria-label="Siguiente">
           <img src={RightArrow} alt="Siguiente" />
-        </button> */}
+        </button>
       </div>
-     < div className='filmy-galery'>
-        <img src={filmy} alt="" />
-        <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
-
-          </div>
-      <AudioControls/>
+      <div className='filmy-galery'>
+        <img src={filmy} alt="Filmy" />
+        <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black" />
+      </div>
+      <AudioControls />
     </div>
   );
 };
