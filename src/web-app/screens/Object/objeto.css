@@ -22,6 +22,13 @@ html {
       }
 
       .audio_obj{
-        z-index: 100;
+        z-index: 1000;
+      }
+      
+      .fixed-button {
+        position: fixed;
+        bottom: 20px; /* Ajusta según sea necesario */
+        right: 20px; /* Ajusta según sea necesario */
+        z-index: 1000; /* Asegúrate de que el botón esté por encima de otros elementos */
       }
       
