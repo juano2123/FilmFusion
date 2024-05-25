@@ -9,6 +9,7 @@ import GanarPage from "../screens/Ganar/ganar";
 import PuzzlePage from "../screens/Puzzle/puzzle";
 import PrizePage from "../screens/ReclamarPremio/reclamarPremio";
 import { setId } from "../redux/features/idSlice";
+import Ar from "../screens/Ar/Ar"
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -36,6 +37,8 @@ const RouterDom = () => {
       <Route path="/objeto" element={<ObjetoPage />} /> 
       <Route path="/ganar" element={<GanarPage />} /> 
       <Route path="/reclamarPremio" element={<PrizePage />} /> 
+      <Route path="/Ar" element={<Ar />} /> 
+
       <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   );

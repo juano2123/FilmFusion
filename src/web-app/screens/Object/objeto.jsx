@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./objeto.css"; // Asegúrate de que el archivo de estilos existe
-import Ar from "../../components/AR/Ar.jsx";
 import BarAr from "../../components/BarAr/BarAr.jsx";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -8,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import AvisoAR from "../../components/AvisoAR/AvisoAR.jsx"; // Asegúrate de importar correctamente
 import { useSelector } from "react-redux";
 import { obtenerImgs } from "../../firebase/config.js";
+import ObjCaliwood  from "../../components/obj/obj.jsx"
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
@@ -51,11 +51,11 @@ const ObjetoPage = () => {
       <div className="galeria">{/* <Showgalery/> */}</div>
       <div className="obj-3D">
         {id === "camara" ? (
-          <Ar url="https://prod.spline.design/A54V1b46TZqJnXQJ/scene.splinecode" />
+          <ObjCaliwood  url="https://prod.spline.design/A54V1b46TZqJnXQJ/scene.splinecode" />
         ) : id === "proyector" ? (
-          <Ar url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
+          <ObjCaliwood  url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
         ) : (
-          <Ar url="linterena" />
+          <ObjCaliwood  url="linterena" />
         )}
         {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
         {/* Componente de aviso que se muestra según el estado */}
