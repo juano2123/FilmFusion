@@ -37,7 +37,7 @@ const ObjetoPage = () => {
       <div className="galeria">{/* <Showgalery/> */}</div>
       <div className="obj-3D">
         {id === "camara" ? (
-          <ObjCaliwood  url="https://prod.spline.design/A54V1b46TZqJnXQJ/scene.splinecode" />
+          <ObjCaliwood  url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" />
         ) : id === "proyector" ? (
           <ObjCaliwood  url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
         ) : (
