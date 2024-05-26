@@ -14,8 +14,8 @@ html, body {
 }
 
 .button-exit {
-  align-self: flex-start; /* Alinea el botón al inicio del eje principal */
-  padding: 20px; /* Espacio para no pegar el botón al borde */
+  align-self: flex-start;
+  padding: 20px;
   background-color: transparent;
 }
 
@@ -28,7 +28,7 @@ html, body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 20px; /* Espacio entre el botón de salida y el contenedor de imagen */
+  margin-top: 20px;
 }
 
 .image-and-description {
@@ -48,8 +48,8 @@ html, body {
   height: 30px;
 }
 
-.imagen-container img {
-  width: 325px; /* Controla el tamaño de la imagen */
+.imagen-container img, .imagen-container video {
+  width: 325px; /* Controla el tamaño de la imagen y el video */
   height: 232px;
   object-fit: cover;
 }
@@ -75,7 +75,7 @@ html, body {
   justify-content: center;
   position: absolute;
   top: 72vh;
-  left:24vh;
+  left: 24vh;
   transform: translate(-50%, -50%);
   width: 50%;
   z-index: 10;
@@ -87,7 +87,6 @@ html, body {
   z-index: 1000;
 }
 
-/* Asegura que los botones y controles de audio estén debajo de la galería */
 .audio_bottom {
   position: absolute;
   width: 100%;
