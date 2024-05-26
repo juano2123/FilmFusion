@@ -22,9 +22,15 @@ import cintaImage from './assets/proyector/CINTA.png'; // Imágenes del proyecto
 import lenteImages from './assets/proyector/LENTE.png';
 import luzImage from './assets/proyector/LUZ.png';
 
+
 import bulbImage from './assets/linterna/BULB.png'; // Imágenes de la linterna
 import placaImage from './assets/linterna/PLACA.png';
 import topImage from './assets/linterna/TOP.png';
+import Linternasin from './assets/linterna/Linternasin.png';
+import linternabulb from './assets/linterna/linternabulb.png';
+import linternatop from './assets/linterna/linternatop.png';
+import linternaFront from './assets/linterna/linternaFront.png';
+import linternaplaca from './assets/linterna/linternaplaca.png';
 
 import './puzzle.css';
 import { useSelector } from 'react-redux';
@@ -186,13 +192,15 @@ const Puzzle = () => {
             />
           )}
           {id === 'linterna' && (
-            <DraggableLantern
-              lanternState={lanternState}
-              srcBulb={bulbImage}
-              srcPlaca={placaImage}
-              srcTop={topImage}
-              onDrop={handleDrop}
-            />
+           <DraggableLantern
+           lanternState={lanternState}
+           srcSin={Linternasin}
+           srcBulb={linternabulb}
+           srcTop={linternatop}
+           srcFront={linternaFront}
+           srcPlaca={linternaplaca}
+           onDrop={handleDrop}
+         />
           )}
         </div>
         {feedbackMessage && (
