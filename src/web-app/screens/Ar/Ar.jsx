@@ -1,7 +1,6 @@
 /* global THREE, THREEx */
-
 import React, { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const ARComponent = () => {
   const sceneRef = useRef(null);
@@ -44,7 +43,7 @@ const ARComponent = () => {
       });
 
       const arToolkitContext = new THREEx.ArToolkitContext({
-        cameraParametersUrl: 'https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/bin/Data/camera_para.dat',
+        cameraParametersUrl: 'https://cdn.rawgit.com/artoolkitx/artoolkit5/master/bin/Data/camera_para.dat',
         detectionMode: 'mono',
       });
 
@@ -65,7 +64,7 @@ const ARComponent = () => {
 
       const markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
         type: 'pattern',
-        patternUrl: 'https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/bin/Data/patt.hiro',
+        patternUrl: 'https://cdn.rawgit.com/artoolkitx/artoolkit5/master/bin/Data/patt.hiro',
       });
 
       // Add a 3D object to the marker
@@ -113,13 +112,15 @@ const ARComponent = () => {
   }, []);
 
   return (
-    <div>
-      <Helmet>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" />
-        <script src="https://cdn.jsdelivr.net/npm/ar.js@1.7.6/aframe/build/aframe-ar.js" />
-      </Helmet>
-      <div ref={sceneRef} />
-    </div>
+    <HelmetProvider>
+      <div>
+        <Helmet>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+          <script src="https://rawcdn.githack.com/jeromeetienne/AR.js/3.1.3/aframe/build/aframe-ar.js"></script>
+        </Helmet>
+        <div ref={sceneRef} />
+      </div>
+    </HelmetProvider>
   );
 };
 
