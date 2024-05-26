@@ -27,9 +27,10 @@ import placaImage from './assets/linterna/PLACA.png';
 import topImage from './assets/linterna/TOP.png';
 
 import './puzzle.css';
+import { useSelector } from 'react-redux';
 
 const Puzzle = () => {
-  const { id } = useParams(); // Obtener el id de los parámetros de la URL
+  const id = useSelector((state) => state.id.value);
 
   const initialImages = {
     camara: [
