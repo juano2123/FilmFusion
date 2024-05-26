@@ -8,7 +8,7 @@ import AvisoAR from "../../components/AvisoAR/AvisoAR.jsx"; // Asegúrate de imp
 import { useSelector } from "react-redux";
 import { obtenerImgs } from "../../firebase/config.js";
 import ObjCaliwood  from "../../components/obj/obj.jsx"
-
+import filmy from "./assets/BienvenidaNoDialog.gif"
 const ObjetoPage = () => {
   const navigate = useNavigate();
   const [showAviso, setShowAviso] = useState(false); // Estado para controlar la visibilidad del aviso
@@ -19,21 +19,7 @@ const ObjetoPage = () => {
   const handleButtonClick = () => {
     navigate("/galeria");
   };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await obtenerImgs('camara');
-  //       setDatos(data);
-
-        
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-  // Función para abrir el aviso
+  
   const handleOpenAviso = () => {
     setShowAviso(true);
   };
@@ -60,6 +46,9 @@ const ObjetoPage = () => {
         {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
         {/* Componente de aviso que se muestra según el estado */}
       </div>
+      <div className='filmyy'>
+        <img src={filmy} alt=""/>
+          </div>
       <div className="audio_obj">
         <CustomButton
           onClick={handleButtonClick}
@@ -72,7 +61,6 @@ const ObjetoPage = () => {
         />
         <AudioControls></AudioControls>
       </div>
-      <p>{id}</p>
     </div>
   );
 };
