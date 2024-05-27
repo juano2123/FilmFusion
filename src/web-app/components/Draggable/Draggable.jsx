@@ -64,7 +64,7 @@ const Draggable = ({ id, src, onDrop }) => {
         src={src}
         alt={id}
         style={{
-          width: '100px',
+          // width: '100px',
           zIndex: 1,
         }}
       />
