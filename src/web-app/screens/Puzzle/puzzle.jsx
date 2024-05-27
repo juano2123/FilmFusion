@@ -35,7 +35,7 @@ import topImage from './assets/linterna/TOP.png';
 import Linternasin from './assets/linterna/Linternasin.png';
 import linternabulb from './assets/linterna/linternabulb.png';
 import linternatop from './assets/linterna/linternatop.png';
-import linternaFront from './assets/linterna/linternaFront.png';
+import linternaFront from './assets/linterna/linternafront.png';
 import linternaplaca from './assets/linterna/linternaplaca.png';
 
 import './puzzle.css';
