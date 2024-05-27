@@ -33,7 +33,7 @@ body {
 }
 .image-overlay-container {
   position: relative;
-  padding-bottom: 8vh;
+  padding-bottom: 16vh;
 }
 
 .text-overlay {
@@ -91,7 +91,7 @@ body {
     flex-direction: column;
     justify-content: center;
     position: fixed; 
-    top: 84vh; 
+    top: 80vh; 
     left: -3vh; 
     transform: translate(-50%, -50%);
     width: 116vh; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
