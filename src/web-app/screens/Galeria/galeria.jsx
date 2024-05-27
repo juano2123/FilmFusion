@@ -26,7 +26,7 @@ import HistoriaProyector1 from "./assets/audios/HistoriaProyector3.mp3";
 import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
 import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
 import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
-import { useSelector } from "react-redux";
+
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
 
@@ -35,7 +35,7 @@ const GaleriaPage = () => {
 
   const [datos, setDatos] = useState([]);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+
   const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
