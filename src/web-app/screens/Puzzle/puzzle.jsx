@@ -28,7 +28,6 @@ import ProyectorLente from './assets/proyector/Conlente.png';
 import ProyectorSinLampara from './assets/proyector/Sinlampara.png';
 import ProyectorLampara from './assets/proyector/Contodo.png';
 
-
 import bulbImage from './assets/linterna/BULB.png'; // Imágenes de la linterna
 import placaImage from './assets/linterna/PLACA.png';
 import topImage from './assets/linterna/TOP.png';
@@ -37,6 +36,9 @@ import linternabulb from './assets/linterna/linternabulb.png';
 import linternatop from './assets/linterna/linternatop.png';
 import linternaFront from './assets/linterna/linternafront.png';
 import linternaplaca from './assets/linterna/linternaplaca.png';
+
+import correctSound from "./assets/sonidos/sonidocorrecto.mp3"
+import incorrectSound from './assets/sonidos/sonidoincorrecto.mp3';
 
 import './puzzle.css';
 import { useSelector } from 'react-redux';
@@ -106,6 +108,16 @@ const Puzzle = () => {
     }
   }, [remainingImages, navigate, id, initialImages]);
 
+  const playCorrectSound = () => {
+    const audio = new Audio(correctSound);
+    audio.play();
+  };
+
+  const playIncorrectSound = () => {
+    const audio = new Audio(incorrectSound);
+    audio.play();
+  };
+
   const handleDrop = (draggedId, dropZoneId) => {
     const correctMapping = {
       camara: {
@@ -126,6 +138,7 @@ const Puzzle = () => {
     };
 
     if (correctMapping[id] && correctMapping[id][dropZoneId] === draggedId) {
+      playCorrectSound();
       setRemainingImages(prev => prev.filter(image => image.id !== draggedId));
       setFeedbackMessage('');
       switch (draggedId) {
@@ -160,6 +173,7 @@ const Puzzle = () => {
           break;
       }
     } else {
+      playIncorrectSound();
       setFeedbackMessage('Lo siento, creo que ahí no iba, inténtalo de nuevo');
       setTimeout(() => setFeedbackMessage(''), 2000); // Quitar el feedback después de 2 segundos
     }

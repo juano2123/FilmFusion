@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import './reclamarPremio.css';  // Asegúrate de tener este archivo CSS
 import backgroundImage from './assets/Group 30.png'; // Cambia la ruta a tu imagen de fondo
 import prizeImage from './assets/Mapa.png';  // Cambia la ruta a tu imagen del premio
@@ -12,6 +12,9 @@ import AudioCamara from "./assets/audios/Descuentocamara.mp3";
 import AudioProyector from "./assets/audios/Descuentoproyector.mp3";
 import AudioLinterna from "./assets/audios/Descuentolinterna.mp3";
 
+import { saveAs } from "file-saver";
+import html2canvas from 'html2canvas';
+
 function PrizeScreen() {
   const [prizeCode, setPrizeCode] = useState('');
   const id = useSelector((state) => state.id.value);
@@ -19,11 +22,25 @@ function PrizeScreen() {
   useEffect(() => {
     const newPrizeCode = Math.floor(1000 + Math.random() * 9000).toString();
     setPrizeCode(newPrizeCode);
-    guardarNumero('/premios', newPrizeCode); // Guarda el código en la base de datos
+    guardarNumero("/premios", newPrizeCode); // Guarda el código en la base de datos
   }, []);
 
-  const handleDownloadClick = () => {
-    console.log("Descargar la imagen o información del premio");
+  const componentRef = useRef(null);
+
+  
+  const handleSaveScreenshot = () => {
+    const element = componentRef.current;
+    if (element) {
+      html2canvas(element).then((canvas) => {
+        canvas.toBlob((blob) => {
+          saveAs(blob, 'screenshot.png');
+        });
+      }).catch((error) => {
+        console.error('Error al capturar la pantalla:', error);
+      });
+    } else {
+      console.error('El elemento no se encontró');
+    }
   };
 
   const getAudioSrc = () => {
@@ -40,13 +57,19 @@ function PrizeScreen() {
   };
 
   return (
-    <div className="prize-screen" >
-      <div className="overlay"> <img src={backgroundImage} alt="" /></div>
+    <div ref={componentRef} className="prize-screen">
+      <div className="overlay">
+        <img src={backgroundImage} alt="Background" />
+      </div>
       <div className="popup">
         <img src={prizeImage} alt="Caliwood Prize" />
-        <p>Felicidades es hora de reclamar el 25% de descuento en tu próxima visita al museo Caliwood, no olvides guardar la imagen de esta pantalla en el botón de abajo.</p>
+        <p>
+          Felicidades, es hora de reclamar el 25% de descuento en tu próxima
+          visita al museo Caliwood. No olvides guardar la imagen de esta
+          pantalla con el botón de abajo.
+        </p>
         <h2># {prizeCode}</h2>
-        <button onClick={handleDownloadClick} className="download-button">
+        <button onClick={handleSaveScreenshot} className="download-button">
           <img src={Descargar} alt="Descargar" />
         </button>
       </div>
@@ -56,5 +79,3 @@ function PrizeScreen() {
 }
 
 export default PrizeScreen;
-
-
