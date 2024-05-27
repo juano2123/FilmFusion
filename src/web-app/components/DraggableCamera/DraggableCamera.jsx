@@ -29,14 +29,14 @@ const DraggableCamera = ({ cameraState, srcClosed, srcFlash, srcLente, srcTurned
     cameraImage = srcClosed;
     dropZones = (
       <>
-        <DropZone id="lente-drop" onDrop={onDrop} style={{ top: '170px', left: '154px', width: '80px', height: '80px', border: '2px dotted #000' }} />
+        <DropZone id="lente-drop" onDrop={onDrop} style={{ top: '170px', left: '154px', width: '80px', height: '80px'}} />
       </>
     );
   } else if (currentCameraState.hasLente && !currentCameraState.hasFlash) {
     cameraImage = srcLente;
     dropZones = (
       <>
-        <DropZone id="flash-drop" onDrop={onDrop} style={{ top: '10px', left: '154px', width: '80px', height: '80px', border: '2px dotted #000' }} />
+        <DropZone id="flash-drop" onDrop={onDrop} style={{ top: '10px', left: '154px', width: '80px', height: '80px' }} />
       </>
     );
   } else if (currentCameraState.hasFlash && currentCameraState.hasLente && !currentCameraState.isTurned) {
@@ -47,7 +47,7 @@ const DraggableCamera = ({ cameraState, srcClosed, srcFlash, srcLente, srcTurned
     dropZones = null;
   } else if (currentCameraState.isOpen && !currentCameraState.hasRollo) {
     cameraImage = srcOpen;
-    dropZones = <DropZone id="rollo-drop" onDrop={onDrop} style={{ top: '161px', left: '14px', width: '193px', height: '60px', border: '2px dotted #000' }} />;
+    dropZones = <DropZone id="rollo-drop" onDrop={onDrop} style={{ top: '161px', left: '14px', width: '193px', height: '60px'}} />;
   } else if (currentCameraState.hasRollo) {
     cameraImage = srcRollo;
     dropZones = null;
