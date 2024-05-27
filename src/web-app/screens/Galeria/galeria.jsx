@@ -116,7 +116,7 @@ const GaleriaPage = () => {
   return (
     <div className="galeria-container" {...handlers}>
       <div className="button-exit">
-        <button className="button-regresar" onClick={() => navigate("/puzzle")}>
+        <button className="button-regresar" onClick={() => navigate("/objeto")}>
           <img src={butonback} alt="Regresar" />
         </button>
       </div>
