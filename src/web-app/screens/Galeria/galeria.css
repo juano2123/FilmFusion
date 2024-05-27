@@ -2,6 +2,11 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Esto elimina el scroll */
+}
+
+* {
+  box-sizing: border-box; /* Asegura que el padding y border no causen desbordamiento */
 }
 
 .galeria-container {
@@ -10,6 +15,8 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
+  width: 100vw; /* Asegura que el contenedor ocupe todo el ancho de la ventana */
+  overflow: hidden; /* Asegura que no haya desbordamiento */
   background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
 }
 
@@ -29,6 +36,7 @@ html, body {
   justify-content: center;
   width: 100%;
   margin-top: 20px;
+  overflow: hidden; /* Evita que los elementos hijos causen desbordamiento */
 }
 
 .image-and-description {
@@ -69,13 +77,28 @@ html, body {
   align-self: center;
 }
 
+.fil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px; /* Ajusta la separación superior si es necesario */
+}
+
+.filmypresentacion {
+  width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+  height: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+  object-fit: contain; /* Mantiene las proporciones de la imagen */
+}
+
 .filmy-galery {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* Centra el contenido horizontalmente */
   position: absolute;
-  top: 72vh;
-  left: 24vh;
+  top: 75vh;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   z-index: 10;

@@ -7,7 +7,12 @@ import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import AudioControls from "../../components/AudioControls/AudioControls";
+import fimlypentax from "./assets/Rompecabezas01PENTAX.gif"
+import fimlyproyector from "./assets/Rompecabezas02PROYECTOR.gif"
+import fimlylinterna from "./assets/Rompecabezas03LINTERNA.gif"
+
 import { useNavigate } from "react-router-dom";
+
 import filmy from "./assets/Sin título-1.svg";
 import { useSelector } from "react-redux";
 
@@ -21,9 +26,13 @@ import HistoriaProyector1 from "./assets/audios/HistoriaProyector3.mp3";
 import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
 import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
 import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
-
+import { useSelector } from "react-redux";
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
+
+  const navigate = useNavigate();
+
+
   const [datos, setDatos] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -42,6 +51,7 @@ const GaleriaPage = () => {
 
     fetchData();
   }, [id]);
+
 
   const handlers = useSwipeable({
     onSwipedLeft: () => cambiarMedio("siguiente"),
@@ -117,8 +127,12 @@ const GaleriaPage = () => {
         <div className="image-and-description">
           {datos.length > 0 ? (
             <div className="medio">
-              {datos[indiceActivo].type === 'imagen' ? (
-                <img src={datos[indiceActivo].img} alt={datos[indiceActivo].descripcion} className="media-element" />
+              {datos[indiceActivo].type === "imagen" ? (
+                <img
+                  src={datos[indiceActivo].img}
+                  alt={datos[indiceActivo].descripcion}
+                  className="media-element"
+                />
               ) : (
                 <video controls className="media-element">
                   <source src={datos[indiceActivo].img} type="video/mp4" />
@@ -131,24 +145,41 @@ const GaleriaPage = () => {
             <p>Cargando...</p>
           )}
         </div>
-        <button onClick={() => cambiarMedio("siguiente")} aria-label="Siguiente">
+        <button
+          onClick={() => cambiarMedio("siguiente")}
+          aria-label="Siguiente"
+        >
           <img src={RightArrow} alt="Siguiente" />
         </button>
       </div>
-      <div className='filmy-galery'>
-        <img src={filmy} alt="Filmy" />
-        <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black" />
+      <div className="fil">
+      {id === "camara" ? (
+          <img src={fimlypentax} alt="Filmy" className="filmypresentacion"/>
+        ) : id === "proyector" ? (
+          <img src={fimlyproyector} alt="Filmy"className="filmypresentacion" />
+        ) : (
+          <img src={fimlylinterna} alt="Filmy" className="filmypresentacion"/>
+        ) }
       </div>
+
       {datos.length > 0 && (
         <AudioControls audioSrc={obtenerAudio()} />
       )}
+
+      <div className="filmy-galery">
+        <CustomButton
+          text="¿Y si me armas?"
+          onClick={handleButtonClick}
+          color="white"
+          size="small"
+          fontSize="medium"
+          fontFamily="sans-serif"
+          outline="1px solid black"
+        />
+      </div>
+
     </div>
   );
 };
 
 export default GaleriaPage;
-
-
-
-
-
