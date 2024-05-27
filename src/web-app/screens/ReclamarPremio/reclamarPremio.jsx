@@ -1,15 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./reclamarPremio.css"; // Asegúrate de tener este archivo CSS
-import backgroundImage from "./assets/Group 30.png"; // Cambia la ruta a tu imagen de fondo
-import prizeImage from "./assets/Mapa.png"; // Cambia la ruta a tu imagen del premio
-import Descargar from "./assets/Descargar.svg";
-import { guardarNumero } from "../../firebase/config";
+import React, { useState, useEffect,useRef } from 'react';
+import './reclamarPremio.css';  // Asegúrate de tener este archivo CSS
+import backgroundImage from './assets/Group 30.png'; // Cambia la ruta a tu imagen de fondo
+import prizeImage from './assets/Mapa.png';  // Cambia la ruta a tu imagen del premio
+import Descargar from './assets/Descargar.svg';
+import { guardarNumero } from '../../firebase/config';
+import AudioControls from "../../components/AudioControls/AudioControls";
+import { useSelector } from "react-redux";
+
+// Importa los archivos de audio para cada objeto
+import AudioCamara from "./assets/audios/Descuentocamara.mp3";
+import AudioProyector from "./assets/audios/Descuentoproyector.mp3";
+import AudioLinterna from "./assets/audios/Descuentolinterna.mp3";
+
 import { saveAs } from "file-saver";
 import html2canvas from 'html2canvas';
 
 function PrizeScreen() {
-  const [prizeCode, setPrizeCode] = useState("");
-  const componentRef = useRef(null);
+  const [prizeCode, setPrizeCode] = useState('');
+  const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
     const newPrizeCode = Math.floor(1000 + Math.random() * 9000).toString();
@@ -17,6 +25,9 @@ function PrizeScreen() {
     guardarNumero("/premios", newPrizeCode); // Guarda el código en la base de datos
   }, []);
 
+  const componentRef = useRef(null);
+
+  
   const handleSaveScreenshot = () => {
     const element = componentRef.current;
     if (element) {
@@ -29,6 +40,19 @@ function PrizeScreen() {
       });
     } else {
       console.error('El elemento no se encontró');
+    }
+  };
+
+  const getAudioSrc = () => {
+    switch (id) {
+      case "camara":
+        return AudioCamara;
+      case "proyector":
+        return AudioProyector;
+      case "linterna":
+        return AudioLinterna;
+      default:
+        return null;
     }
   };
 
@@ -49,6 +73,7 @@ function PrizeScreen() {
           <img src={Descargar} alt="Descargar" />
         </button>
       </div>
+      <AudioControls audioSrc={getAudioSrc()} />
     </div>
   );
 }

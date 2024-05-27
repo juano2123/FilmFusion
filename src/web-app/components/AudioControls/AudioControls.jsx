@@ -9,54 +9,69 @@ import './AudioControls.css'; // Asegúrate de tener este archivo para los estil
 const AudioControls = ({ audioSrc }) => {
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const audioRef = useRef(new Audio(audioSrc));
-  const intervalRef = useRef();
-
-  // Actualiza el progreso del audio
-  const updateProgress = () => {
-    const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
-    setProgress(progress);
-  };
-
-  // Manejador de Play/Pause
-  const togglePlayPause = () => {
-    setPlaying(!playing);
-  };
-
-  // Manejador de retroceso
-  const handleBackward = () => {
-    const newTime = Math.max(0, audioRef.current.currentTime - 2);
-    audioRef.current.currentTime = newTime;
-    updateProgress();
-  };
-
-  // Manejador de avance rápido
-  const handleForward = () => {
-    const newTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 2);
-    audioRef.current.currentTime = newTime;
-    updateProgress();
-  };
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    playing ? audioRef.current.play() : audioRef.current.pause();
-  }, [playing]);
+    if (audioRef.current) {
+      audioRef.current.src = audioSrc;
+      audioRef.current.load(); // Cargar el nuevo src
+    } else {
+      audioRef.current = new Audio(audioSrc);
+    }
 
-  // Escuchar el evento 'timeupdate' para actualizar el progreso
-  useEffect(() => {
+    const updateProgress = () => {
+      if (audioRef.current && audioRef.current.duration) {
+        const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+        setProgress(progress);
+      }
+    };
+
+    const handleError = (e) => {
+      console.error('Error al cargar el audio:', e);
+      setPlaying(false);
+    };
+
     audioRef.current.addEventListener('timeupdate', updateProgress);
+    audioRef.current.addEventListener('error', handleError);
 
     return () => {
-      audioRef.current.removeEventListener('timeupdate', updateProgress);
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('timeupdate', updateProgress);
+        audioRef.current.removeEventListener('error', handleError);
+        audioRef.current.pause();
+      }
     };
-  }, []);
+  }, [audioSrc]);
 
-  // Efecto para limpiar el intervalo y el audio al desmontar el componente
-  useEffect(() => {
-    return () => {
-      clearInterval(intervalRef.current);
-      audioRef.current.pause();
-    };
-  }, []);
+  const togglePlayPause = () => {
+    if (audioRef.current) {
+      if (playing) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.error('Error al intentar reproducir el audio:', error);
+          setPlaying(false);
+        });
+      }
+      setPlaying(!playing);
+    }
+  };
+
+  const handleBackward = () => {
+    if (audioRef.current) {
+      const newTime = Math.max(0, audioRef.current.currentTime - 10);
+      audioRef.current.currentTime = newTime;
+      setProgress((newTime / audioRef.current.duration) * 100);
+    }
+  };
+
+  const handleForward = () => {
+    if (audioRef.current) {
+      const newTime = Math.min(audioRef.current.duration, audioRef.current.currentTime + 10);
+      audioRef.current.currentTime = newTime;
+      setProgress((newTime / audioRef.current.duration) * 100);
+    }
+  };
 
   return (
     <div className="audio-controls">

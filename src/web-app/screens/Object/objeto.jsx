@@ -13,6 +13,11 @@ import DIALOGOPENTAX from "./assets/Diálogo4.png";
 import DIALOGOPROYECTOR from "./assets/Diálogo8PROYECTOR.png"
 import DIALOGOLINTERNA from "./assets/Diálogo12LITERNA.png";
 
+import HistoriaCamara from "./assets/Historia-Cámara.mp3";
+import HistoriaProyector from "./assets/Historia-proyector.mp3";
+import HistoriaLinterna from "./assets/Historia-Linterna.mp3";
+
+
 const ObjetoPage = () => {
   const navigate = useNavigate();
   const [showAviso, setShowAviso] = useState(false); // Estado para controlar la visibilidad del aviso
@@ -94,7 +99,25 @@ const ObjetoPage = () => {
       )}
 
       <div className="audio_obj">
-        <AudioControls />
+
+        {/* <CustomButton
+          onClick={handleButtonClick}
+          text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar."
+          color="grey"
+          size="large"
+          fontSize="medium"
+          fontFamily="sans-serif"
+          outline="0px solid black"
+        /> */}
+         {id === "camara" && (
+          <AudioControls audioSrc={HistoriaCamara} />
+        )}
+        {id === "proyector" && (
+          <AudioControls audioSrc={HistoriaProyector} />
+        )}
+        {id === "linterna" && (
+           <AudioControls audioSrc={HistoriaLinterna}/>
+        )}
       </div>
     </div>
   );
