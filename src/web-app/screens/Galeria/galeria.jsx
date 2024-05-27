@@ -8,16 +8,25 @@ import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import { useNavigate } from "react-router-dom";
-import filmy from "./assets/Sin título-1.svg"
+import filmy from "./assets/Sin título-1.svg";
 import { useSelector } from "react-redux";
+
+// Importa los archivos de audio para cada objeto
+import HistoriaCamara1 from "./assets/audios/HistoriaCamara1.mp3";
+import HistoriaCamara2 from "./assets/audios/HistoriaCamara2.mp3";
+import HistoriaCamara3 from "./assets/audios/HistoriaCamara3.mp3";
+import HistoriaProyector2 from "./assets/audios/HistoriaProyector1.mp3";
+import HistoriaProyector3 from "./assets/audios/HistoriaProyector2.mp3";
+import HistoriaProyector1 from "./assets/audios/HistoriaProyector3.mp3";
+import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
+import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
+import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
-
-  const navigate = useNavigate();
-
-  const [datos, setDatos] = useState([]);;
+  const [datos, setDatos] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
@@ -25,7 +34,6 @@ const GaleriaPage = () => {
       try {
         const data = await obtenerImgs(id);
         const formattedData = data ? Object.values(data) : [];
-
         setDatos(formattedData);
       } catch (error) {
         setError(error.message);
@@ -34,36 +42,6 @@ const GaleriaPage = () => {
 
     fetchData();
   }, [id]);
-console.log(datos)
-  
-  // useEffect(() => {
-  //   async function cargarMedios() {
-  //     const mediosInfo = [
-  //       { path: "pentax/Foto 1 - Cataras del Niagara.png", descripcion: "Fotógrafo: gmushinsky, Año: 2019, Cámara: Pentax K1000", tipo: 'imagen'  },
-  //     { path: "pentax/Foto 2 - Guitarra.png", descripcion: "Fotógrafo: fivedayforecast, Año: 2011, Cámara: Pentax K1000", tipo: 'imagen'  },
-  //     { path: "pentax/Foto 3 - Girasoles.png", descripcion: "Fotógrafo: bravopires, Año: 2013, Cámara: Pentax K1000" , tipo: 'imagen' },
-  //     { path: "pentax/Diapositiva astronomica.png", descripcion: "Diapositivas astronómicas mecánicas, Año: 1880, Autor: Baker of Holborn" ,tipo: 'imagen' },
-  //     { path: "pentax/Diapositiva indumentaria real.png", descripcion: "Diapositivas Indumentaria real, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
-  //     { path: "pentax/Diapositiva tribus africanas.png", descripcion: "Diapositivas colonias africanas, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
-  //     { path: "pentax/Tom and Jerry - Jolly Fish (1932-recortado).mp4", descripcion: "Fragmento de película: Tom y Jerry, Años: 1931, Autor: Amadee J. Van Beuren", tipo: 'video' },
-  //     { path: "pentax/high flyers (recortado).mp4", descripcion: "Fragmento de película: Abbott and Costello in High Flyers, Año: 1945, Autor: Castle Films", tipo: 'video' },
-  //     { path: "pentax/lion around.mp4", descripcion: "Fragmento de película: Donald Duck: Lion Around, Año:1950, Autor: Walt Disney", tipo: 'video' }
-  //     ];
-
-  //     const resultados = await Promise.all(
-  //       mediosInfo.map(item => obtenerImagenUrl(item.path))
-  //     );
-  //     setMedios(
-  //       resultados.map((url, index) => ({
-  //         src: url,
-  //         descripcion: mediosInfo[index].descripcion,
-  //         tipo: mediosInfo[index].tipo
-  //       }))
-  //     );
-  //   }
-
-  //   cargarMedios();
-  // }, []);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => cambiarMedio("siguiente"),
@@ -84,12 +62,51 @@ console.log(datos)
     });
   };
 
-  // if (!medios.length) return <div>Cargando medios...</div>;
+  if (error) {
+    return <div>Error al cargar los datos: {error}</div>;
+  }
+
+  const obtenerAudio = () => {
+    if (id === "camara") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaCamara1;
+        case 1:
+          return HistoriaCamara2;
+        case 2:
+          return HistoriaCamara3;
+        default:
+          return HistoriaCamara1;
+      }
+    } else if (id === "proyector") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaProyector1;
+        case 1:
+          return HistoriaProyector2;
+        case 2:
+          return HistoriaProyector3;
+        default:
+          return HistoriaProyector1;
+      }
+    } else if (id === "linterna") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaLinterna1;
+        case 1:
+          return HistoriaLinterna2;
+        case 2:
+          return HistoriaLinterna3;
+        default:
+          return HistoriaLinterna1;
+      }
+    }
+  };
 
   return (
     <div className="galeria-container" {...handlers}>
       <div className="button-exit">
-        <button className="button-regresar" onClick={handleButtonClick}>
+        <button className="button-regresar" onClick={() => navigate("/puzzle")}>
           <img src={butonback} alt="Regresar" />
         </button>
       </div>
@@ -122,12 +139,15 @@ console.log(datos)
         <img src={filmy} alt="Filmy" />
         <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black" />
       </div>
-      <AudioControls />
+      {datos.length > 0 && (
+        <AudioControls audioSrc={obtenerAudio()} />
+      )}
     </div>
   );
 };
 
 export default GaleriaPage;
+
 
 
 
