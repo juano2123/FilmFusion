@@ -21,6 +21,16 @@ import camaraRollo from './assets/camara/camararollo.png'; // Imagen de la cáma
 import cintaImage from './assets/proyector/CINTA.png'; // Imágenes del proyector
 import lenteImages from './assets/proyector/LENTE.png';
 import luzImage from './assets/proyector/LUZ.png';
+import ProyectorSin from './assets/proyector/Sinnada.png';
+import Proyectorrollo from './assets/proyector/Conrollos.png';
+import Proyectorside from './assets/proyector/Sinlente.png';
+import ProyectorLente from './assets/proyector/Conlente.png';
+import ProyectorSinLampara from './assets/proyector/Sinlampara.png';
+import ProyectorLampara from './assets/proyector/Contodo.png';
+
+
+
+
 
 
 import bulbImage from './assets/linterna/BULB.png'; // Imágenes de la linterna
@@ -46,7 +56,7 @@ const Puzzle = () => {
     ],
     proyector: [
       { id: 'cinta', src: cintaImage },
-      { id: 'lente', src: lenteImages },
+      { id: 'lens', src: lenteImages },
       { id: 'luz', src: luzImage }
     ],
     linterna: [
@@ -66,7 +76,7 @@ const Puzzle = () => {
   }); // Estado para la imagen actual de la cámara y los componentes agregados
   const [projectorState, setProjectorState] = useState({
     hasCinta: false,
-    hasLente: false,
+    hasLens: false,
     hasLuz: false
   }); // Estado para la imagen actual del proyector y los componentes agregados
   const [lanternState, setLanternState] = useState({
@@ -109,7 +119,7 @@ const Puzzle = () => {
       },
       proyector: {
         'cinta-drop': 'cinta',
-        'lente-drop': 'lente',
+        'lens-drop': 'lens',
         'luz-drop': 'luz'
       },
       linterna: {
@@ -135,8 +145,8 @@ const Puzzle = () => {
         case 'cinta':
           setProjectorState(prev => ({ ...prev, hasCinta: true }));
           break;
-        case 'lente':
-          setProjectorState(prev => ({ ...prev, hasLente: true }));
+        case 'lens':
+          setProjectorState(prev => ({ ...prev, hasLens: true }));
           break;
         case 'luz':
           setProjectorState(prev => ({ ...prev, hasLuz: true }));
@@ -183,13 +193,16 @@ const Puzzle = () => {
             />
           )}
           {id === 'proyector' && (
-            <DraggableProjector
-              projectorState={projectorState}
-              srcCinta={cintaImage}
-              srcLente={lenteImages}
-              srcLuz={luzImage}
-              onDrop={handleDrop}
-            />
+             <DraggableProjector
+             projectorState={projectorState}
+             srcProyectorSin={ProyectorSin}
+             srcProyectorrollo={Proyectorrollo}
+             srcProyectorside={Proyectorside}
+             srcProyectorLente={ProyectorLente}
+             srcProyectorSinLampara={ProyectorSinLampara}
+             srcProyectorLampara={ProyectorLampara}
+             onDrop={handleDrop}
+           />
           )}
           {id === 'linterna' && (
            <DraggableLantern
