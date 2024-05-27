@@ -29,10 +29,6 @@ import ProyectorSinLampara from './assets/proyector/Sinlampara.png';
 import ProyectorLampara from './assets/proyector/Contodo.png';
 
 
-
-
-
-
 import bulbImage from './assets/linterna/BULB.png'; // Imágenes de la linterna
 import placaImage from './assets/linterna/PLACA.png';
 import topImage from './assets/linterna/TOP.png';
@@ -50,8 +46,8 @@ const Puzzle = () => {
 
   const initialImages = {
     camara: [
-      { id: 'flash', src: flashImage },
       { id: 'lente', src: lenteImage },
+      { id: 'flash', src: flashImage },
       { id: 'rollo', src: rolloImage }
     ],
     proyector: [
@@ -104,7 +100,7 @@ const Puzzle = () => {
     if (remainingImages.length === 0 && initialImages[id]) {
       const timer = setTimeout(() => {
         navigate('/ganar'); // Redirige a la página de ganar después de 5 segundos
-      }, 5000);
+      }, 2000);
 
       return () => clearTimeout(timer); // Limpiar el temporizador en caso de que el componente se desmonte antes de que se complete el tiempo
     }
