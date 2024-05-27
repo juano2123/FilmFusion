@@ -9,6 +9,11 @@ import { useSelector } from "react-redux";
 import { obtenerImgs } from "../../firebase/config.js";
 import ObjCaliwood  from "../../components/obj/obj.jsx"
 
+import HistoriaCamara from "./assets/Historia-Cámara.mp3";
+import HistoriaProyector from "./assets/Historia-proyector.mp3";
+import HistoriaLinterna from "./assets/Historia-Linterna.mp3";
+
+
 const ObjetoPage = () => {
   const navigate = useNavigate();
   const [showAviso, setShowAviso] = useState(false); // Estado para controlar la visibilidad del aviso
@@ -70,7 +75,15 @@ const ObjetoPage = () => {
           fontFamily="sans-serif"
           outline="0px solid black"
         />
-        <AudioControls></AudioControls>
+         {id === "camara" && (
+          <AudioControls audioSrc={HistoriaCamara} />
+        )}
+        {id === "proyector" && (
+          <AudioControls audioSrc={HistoriaProyector} />
+        )}
+        {id === "linterna" && (
+           <AudioControls audioSrc={HistoriaLinterna}/>
+        )}
       </div>
       <p>{id}</p>
     </div>

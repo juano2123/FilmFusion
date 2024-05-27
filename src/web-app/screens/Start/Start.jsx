@@ -60,11 +60,10 @@ console.log(id)
           </div>
           <div className='filmyy'>
         <img src={filmy} alt="" />
-
           </div>
         </div>
         
-        <AudioControls audioSrc={audioFile1} />
+        {/* <AudioControls audioSrc={audioFile1} /> */}
       </div>
     </div>
     
