@@ -55,7 +55,7 @@ const DraggableCamera = ({ cameraState, srcClosed, srcFlash, srcLente, srcTurned
     cameraImage = srcClosed;
     dropZones = (
       <>
-        <DropZone id="lente-drop" onDrop={onDrop} style={{ top: '170px', left: '154px', width: '80px', height: '80px', border: '2px dotted #000' }} />
+        <DropZone id="lente-drop" onDrop={onDrop} style={{ top: '170px', left: '154px', width: '80px', height: '80px' }} />
       </>
     );
   }
