@@ -100,7 +100,7 @@ const ObjetoPage = () => {
 
       <div className="audio_obj">
 
-        <CustomButton
+        {/* <CustomButton
           onClick={handleButtonClick}
           text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar."
           color="grey"
@@ -108,7 +108,7 @@ const ObjetoPage = () => {
           fontSize="medium"
           fontFamily="sans-serif"
           outline="0px solid black"
-        />
+        /> */}
          {id === "camara" && (
           <AudioControls audioSrc={HistoriaCamara} />
         )}
