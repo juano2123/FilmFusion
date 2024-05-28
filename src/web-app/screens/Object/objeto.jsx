@@ -27,7 +27,7 @@ const ObjetoPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowElements(false);
-    }, 4000); // 2000 ms = 2 segundos
+    }, 5000); // 2000 ms = 2 segundos
 
     return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
   }, []);

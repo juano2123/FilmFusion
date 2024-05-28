@@ -57,14 +57,15 @@ html, body {
 }
 
 .imagen-container img, .imagen-container video {
-  width: 325px; /* Controla el tamaño de la imagen y el video */
-  height: 232px;
+  width: 80vw; /* Ajusta el tamaño de las imágenes y videos para ser responsive */
+  max-width: 325px;
+  height: auto;
   object-fit: cover;
 }
 
 .descripcion {
   color: #fff;
-  font-size: 18px;
+  font-size: 4vw; /* Tamaño de fuente responsive */
   margin-top: 8px;
   text-align: center;
   font-family: sans-serif;
@@ -79,17 +80,19 @@ html, body {
 
 .fil {
   display: flex;
+  flex-direction: column; /* Cambiado a columna para apilar Filmy y el diálogo verticalmente */
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px; /* Ajusta la separación superior si es necesario */
 }
 
 .filmypresentacion {
-  width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
-  height: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+  width: 50vw; /* Asegura que la imagen ocupe todo el contenedor */
+  max-width: 200px;
+  height: auto; /* Asegura que la imagen ocupe todo el contenedor */
   object-fit: contain; /* Mantiene las proporciones de la imagen */
 }
+
 
 .filmy-galery {
   display: flex;
@@ -97,7 +100,7 @@ html, body {
   justify-content: center;
   align-items: center; /* Centra el contenido horizontalmente */
   position: absolute;
-  top: 75vh;
+  top: 70vh; /* Baja la posición del botón */
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
@@ -114,4 +117,28 @@ html, body {
   position: absolute;
   width: 100%;
   bottom: 0;
+}
+
+/* Media Query para dispositivos pequeños */
+@media (max-width: 600px) {
+  .filmypresentacion {
+    width: 80vw; /* Ajusta el ancho de la imagen en dispositivos pequeños */
+    max-width: 150px; /* Ajusta el ancho máximo de la imagen en dispositivos pequeños */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+
+
+
+  .descripcion {
+    font-size: 4vw; /* Ajusta el tamaño de la fuente en dispositivos pequeños */
+  }
+
+  .imagen-container img, .imagen-container video {
+    width: 90vw; /* Ajusta el tamaño de las imágenes y videos en dispositivos pequeños */
+    max-width: 280px;
+  }
+
+  .filmy-galery {
+    top: 80vh; /* Baja la posición del botón en dispositivos pequeños */
+  }
 }

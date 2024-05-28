@@ -7,41 +7,37 @@ import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import AudioControls from "../../components/AudioControls/AudioControls";
-import fimlypentax from "./assets/Rompecabezas01PENTAX.gif"
-import fimlyproyector from "./assets/Rompecabezas02PROYECTOR.gif"
-import fimlylinterna from "./assets/Rompecabezas03LINTERNA.gif"
+import filmy from "./assets/SaludoPrueba2.0.svg";
 
 import { useNavigate } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 
 // Importa los archivos de audio para cada objeto
 import HistoriaCamara1 from "./assets/audios/HistoriaCamara1.mp3";
 import HistoriaCamara2 from "./assets/audios/HistoriaCamara2.mp3";
 import HistoriaCamara3 from "./assets/audios/HistoriaCamara3.mp3";
-import HistoriaProyector2 from "./assets/audios/HistoriaProyector1.mp3";
-import HistoriaProyector3 from "./assets/audios/HistoriaProyector2.mp3";
-import HistoriaProyector1 from "./assets/audios/HistoriaProyector3.mp3";
-import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
+import HistoriaProyector1 from "./assets/audios/HistoriaProyector1.mp3";
+import HistoriaProyector2 from "./assets/audios/HistoriaProyector2.mp3";
+import HistoriaProyector3 from "./assets/audios/HistoriaProyector3.mp3";
+import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna1.mp3";
 import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
-import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
+import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna3.mp3";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
-
-  const navigate = useNavigate();
-
-
   const [datos, setDatos] = useState([]);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await obtenerImgs(id);
-        const formattedData = data ? Object.values(data) : [];
+        const formattedData = data ? Object.values(data).map(item => ({
+          ...item,
+          type: item.type || item.imagen // Normaliza la clave 'type'
+        })) : [];
         setDatos(formattedData);
       } catch (error) {
         setError(error.message);
@@ -50,7 +46,6 @@ const GaleriaPage = () => {
 
     fetchData();
   }, [id]);
-
 
   const handlers = useSwipeable({
     onSwipedLeft: () => cambiarMedio("siguiente"),
@@ -63,11 +58,9 @@ const GaleriaPage = () => {
 
   const cambiarMedio = (direccion) => {
     setIndiceActivo((prevIndex) => {
-      if (direccion === "siguiente") {
-        return (prevIndex + 1) % datos.length;
-      } else {
-        return (prevIndex - 1 + datos.length) % datos.length;
-      }
+      const newIndex = direccion === "siguiente" ? (prevIndex + 1) % datos.length : (prevIndex - 1 + datos.length) % datos.length;
+      console.log("Cambiando a:", newIndex, "Datos:", datos[newIndex]);
+      return newIndex;
     });
   };
 
@@ -133,8 +126,7 @@ const GaleriaPage = () => {
                   className="media-element"
                 />
               ) : (
-                <video controls className="media-element">
-                  <source src={datos[indiceActivo].img} type="video/mp4" />
+                <video controls className="media-element" src={datos[indiceActivo].img} >
                   Tu navegador no soporta la etiqueta de video.
                 </video>
               )}
@@ -152,20 +144,13 @@ const GaleriaPage = () => {
         </button>
       </div>
       <div className="fil">
-      {id === "camara" ? (
-          <img src={fimlypentax} alt="Filmy" className="filmypresentacion"/>
-        ) : id === "proyector" ? (
-          <img src={fimlyproyector} alt="Filmy"className="filmypresentacion" />
+        {id === "camara" ? (
+          <>
+            <img src={filmy} alt="" className="fillm" />
+          </>
         ) : (
-          <img src={fimlylinterna} alt="Filmy" className="filmypresentacion"/>
-        ) }
-      </div>
-
-      {datos.length > 0 && (
-        <AudioControls audioSrc={obtenerAudio()} />
-      )}
-
-      <div className="filmy-galery">
+          <img src={filmy} alt="Filmy" className="filmypresentacion" />
+        )}
         <CustomButton
           text="¿Y si me armas?"
           onClick={handleButtonClick}
@@ -177,6 +162,9 @@ const GaleriaPage = () => {
         />
       </div>
 
+      {datos.length > 0 && <AudioControls audioSrc={obtenerAudio()} />}
+
+      <div className="filmy-galery"></div>
     </div>
   );
 };
