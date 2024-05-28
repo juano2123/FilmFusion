@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { getDatabase, ref as dbRef, set, onValue } from "firebase/database";
+import { getDatabase, ref as dbRef, set, onValue, push } from "firebase/database";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -25,7 +25,7 @@ const database = getDatabase(app);
  */
 function guardarNumero(path, numero) {
   const reference = dbRef(database, path);
-  set(reference, {
+  push(reference, {
     numero: numero,
   })
     .then(() => {

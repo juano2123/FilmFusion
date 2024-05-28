@@ -1,9 +1,9 @@
-import React, { useState, useEffect,useRef } from 'react';
-import './reclamarPremio.css';  // Asegúrate de tener este archivo CSS
-import backgroundImage from './assets/Group 30.png'; // Cambia la ruta a tu imagen de fondo
-import prizeImage from './assets/Mapa.png';  // Cambia la ruta a tu imagen del premio
-import Descargar from './assets/Descargar.svg';
-import { guardarNumero } from '../../firebase/config';
+import React, { useState, useEffect, useRef } from "react";
+import "./reclamarPremio.css"; // Asegúrate de tener este archivo CSS
+import backgroundImage from "./assets/Group 30.png"; // Cambia la ruta a tu imagen de fondo
+import prizeImage from "./assets/Mapa.png"; // Cambia la ruta a tu imagen del premio
+import Descargar from "./assets/Descargar.svg";
+import { guardarNumero } from "../../firebase/config";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import { useSelector } from "react-redux";
 
@@ -13,33 +13,42 @@ import AudioProyector from "./assets/audios/Descuentoproyector.mp3";
 import AudioLinterna from "./assets/audios/Descuentolinterna.mp3";
 
 import { saveAs } from "file-saver";
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 
 function PrizeScreen() {
-  const [prizeCode, setPrizeCode] = useState('');
+  const [prizeCode, setPrizeCode] = useState("");
+  console.log(prizeCode);
   const id = useSelector((state) => state.id.value);
+  const effectExecutedRef = useRef(false); // Referencia para verificar si el efecto ya se ha ejecutado
 
   useEffect(() => {
-    const newPrizeCode = Math.floor(1000 + Math.random() * 9000).toString();
-    setPrizeCode(newPrizeCode);
-    guardarNumero("/premios", newPrizeCode); // Guarda el código en la base de datos
+    if (!effectExecutedRef.current) {
+      // Solo ejecuta si effectExecutedRef.current es false
+      effectExecutedRef.current = true; // Marca el efecto como ejecutado
+
+      const newPrizeCode = Math.floor(1000 + Math.random() * 9000).toString();
+      setPrizeCode(newPrizeCode);
+      console.log("Nuevo código de premio generado:", newPrizeCode);
+      guardarNumero("/premios", newPrizeCode); // Guarda el código en la base de datos
+    }
   }, []);
 
   const componentRef = useRef(null);
 
-  
   const handleSaveScreenshot = () => {
     const element = componentRef.current;
     if (element) {
-      html2canvas(element).then((canvas) => {
-        canvas.toBlob((blob) => {
-          saveAs(blob, 'screenshot.png');
+      html2canvas(element)
+        .then((canvas) => {
+          canvas.toBlob((blob) => {
+            saveAs(blob, "screenshot.png");
+          });
+        })
+        .catch((error) => {
+          console.error("Error al capturar la pantalla:", error);
         });
-      }).catch((error) => {
-        console.error('Error al capturar la pantalla:', error);
-      });
     } else {
-      console.error('El elemento no se encontró');
+      console.error("El elemento no se encontró");
     }
   };
 
@@ -73,7 +82,9 @@ function PrizeScreen() {
           <img src={Descargar} alt="Descargar" />
         </button>
       </div>
-      <AudioControls audioSrc={getAudioSrc()} />
+      <div className="audio">
+        <AudioControls audioSrc={getAudioSrc()} />
+      </div>
     </div>
   );
 }

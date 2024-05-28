@@ -57,7 +57,7 @@ const ObjetoPage = () => {
         ) : id === "proyector" ? (
           <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
         ) : (
-          <ObjCaliwood url="linterena" />
+          <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
         )}
         {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
         {/* Componente de aviso que se muestra según el estado */}

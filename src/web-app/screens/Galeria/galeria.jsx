@@ -13,7 +13,6 @@ import fimlylinterna from "./assets/Rompecabezas03LINTERNA.gif"
 
 import { useNavigate } from "react-router-dom";
 
-import filmy from "./assets/Sin título-1.svg";
 import { useSelector } from "react-redux";
 
 // Importa los archivos de audio para cada objeto
