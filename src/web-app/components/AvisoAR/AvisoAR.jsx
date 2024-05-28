@@ -9,9 +9,7 @@ const AvisoAR = ({ onClose, onAccept }) => {
     const navigate = useNavigate();
   
   
-    const handleButtonClick = () => {
-      navigate("/objeto");
-    };
+  
   return (
     <div className="popup-overlay">
       <div className="popup-container">

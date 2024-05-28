@@ -62,10 +62,10 @@ const ARComponent = () => {
       const markerRoot = new THREE.Group();
       scene.add(markerRoot);
 
-      const markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
-        type: 'pattern',
-        patternUrl: 'https://cdn.rawgit.com/artoolkitx/artoolkit5/master/bin/Data/patt.hiro',
-      });
+        // const markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+        //   type: 'pattern',
+        //   patternUrl: 'https://cdn.rawgit.com/artoolkitx/artoolkit5/master/bin/Data/patt.hiro',
+        // });
 
       // Add a 3D object to the marker
       const geometry = new THREE.BoxGeometry(1, 1, 1);

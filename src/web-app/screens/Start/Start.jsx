@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import AvisoComponente from '../../components/Aviso/AvisoComponente';
 import LoadingAnimation from '../../components/LoadingAnimation/LoadingAnimation';
-import AudioControls from '../../components/AudioControls/AudioControls';
-import audioFile from './assets/audio1.mp3'; // Correct this path as needed
 import { useNavigate } from "react-router-dom";
-import audioFile1 from './assets/audio2.mp3'; // Correct this path as needed
 import TicketImage from './assets/Ticket.png'; 
 import './Start.css';
 import filmy from "./assets/BienvenidaNoDialogo.gif"
 import { useSelector } from 'react-redux';
-import { obtenerImgs, obtenerimgs } from '../../firebase/config';
 
 const Start = () => {
   const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);

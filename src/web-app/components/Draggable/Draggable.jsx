@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useDragAndDropContext } from './DragAndDropContext'; // Importa el contexto
 
 const Draggable = ({ id, src, onDrop }) => {
-  const { setDraggedId, activeDropZone, setActiveDropZone } = useDragAndDropContext();
+  const { setDraggedId, activeDropZone } = useDragAndDropContext();
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [originalPosition, setOriginalPosition] = useState({ x: 0, y: 0 });

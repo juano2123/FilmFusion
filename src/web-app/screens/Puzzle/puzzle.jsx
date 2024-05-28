@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'; 
 import BarAR from '../../components/BarAr/BarAr';
 import MissingObject from '../../components/MissingObject/missingObject';
 import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
