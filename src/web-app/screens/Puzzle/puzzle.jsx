@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,avigate } from 'react';
 import BarAR from '../../components/BarAr/BarAr';
 import MissingObject from '../../components/MissingObject/missingObject';
 import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
@@ -41,6 +41,7 @@ import incorrectSound from './assets/sonidos/sonidoincorrecto.mp3';
 
 import './puzzle.css';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Puzzle = () => {
   const id = useSelector((state) => state.id.value);
