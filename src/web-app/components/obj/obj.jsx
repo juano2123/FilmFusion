@@ -3,10 +3,18 @@ import Spline from '@splinetool/react-spline';
 
 const ObjCaliwood  = ({ url }) => {
   return (
-    <div className="obj" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh' }}>
+    <div className="obj" style={{
+      position: 'fixed', 
+      top: '50%', 
+      left: '50%', 
+      transform: 'translate(-50%, -50%)', 
+      width: '404vw', 
+      height: '50vh'
+    }}>
       <Spline scene={url} />
     </div>
   );
 };
 
-export default ObjCaliwood ;
+export default ObjCaliwood;
+
