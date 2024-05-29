@@ -1,53 +1,50 @@
 /* Start.css */
-html {
+html, body {
   height: 100%; 
-  
-}
-
-body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
-
 
 .contenido-principal {
   display: flex;
   flex-direction: column;
   height: 100vh; /* Full viewport height */
-  justify-content: flex-end; /* Aligns children to the bottom */
-  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%); 
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
 }
 
 .bottom-container {
   width: 100%; /* Full width to contain both image and controls */
-  align-items: flex-end;
-  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
   position: relative;
 }
 
 .ticket-image {
-  width: 100%; /* Asegúrate de ajustar esto según tus necesidades */
+  width: 100%; /* Ensure it adjusts according to container */
+  max-width: 600px; /* Optional: Limit the max width of the image */
   height: auto;
   display: block;
 }
+
 .image-overlay-container {
   position: relative;
-  padding-bottom: 8vh;
+  z-index: 1; /* Ensure the text and images are above the video */
 }
 
 .text-overlay {
   position: absolute;
-  top: 42%;
-  right: 0;
-  transform: translateY(-50%);
-  color: white; /* Asegúrate de que el texto es visible sobre el fondo de la imagen */
-  font-size: 1rem;/* Establece el tamaño de la fuente */
-  width: 90%; /* Ocupa todo el ancho del contenedor para alinear el texto desde la derecha */
-  text-align: right; /* Alinea el texto a la derecha */
-  font-family: sans-serif;
-  margin: 10px;
-  margin-top: -15px;
+  top: 50%; /* Center vertically within the container */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the text */
+  color: white;
+  font-size: 1rem;
+  width: 90%; /* Full width for text alignment */
+  text-align: center; /* Center text alignment */
+  margin: 0;
   font-weight: bold;
 }
 
@@ -57,45 +54,44 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cubre el área del contenedor sin perder las proporciones */
-  z-index: -1; /* Asegura que el video quede detrás de todo el contenido */
-}
-.image-overlay-container, .text-overlay {
-  z-index: 1; /* Asegura que el texto y las imágenes estén sobre el video */
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays behind all content */
 }
 
 .text-overlay p {
-  margin: 0 0 6px 0; /* Añade un margen inferior de 10px */
+  margin: 0 0 6px 0;
   padding: 0;
-  
 }
 
-/* Estilos para teléfonos móviles grandes */
+/* Styles for large mobile phones */
 @media (max-width: 414px) {
   .text-overlay {
-    font-size: 1.0rem; /* Más pequeño en teléfonos grandes */
-    
+    font-size: 1rem;
   }
 }
 
-/* Estilos para teléfonos móviles pequeños */
+/* Styles for small mobile phones */
 @media (max-width: 480px) {
   .text-overlay {
-    font-size: 1.0rem; /* Aún más pequeño en teléfonos pequeños */
-  
+    font-size: 1rem;
   }
 }
 
-.filmyy{
+.filmyy {
   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed; 
-    top: 84vh; 
-    left: -3vh; 
-    transform: translate(-50%, -50%);
-    width: 116vh; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
-    height: 100vh;
-    z-index: 10;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed; 
+  top: 85vh; /* Adjust this value as needed */
+  transform: translate(-50%, -63%);
+  width: 150vh; /* Adjust the width */
+  height: auto;
+  z-index: 10;
+}
+
+.filmyy img {
+  width: 100%; /* Ensure it adjusts according to container */
+  height: auto; /* Maintain aspect ratio */
 }
 

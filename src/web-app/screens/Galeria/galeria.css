@@ -2,6 +2,11 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Esto elimina el scroll */
+}
+
+* {
+  box-sizing: border-box; /* Asegura que el padding y border no causen desbordamiento */
 }
 
 .galeria-container {
@@ -10,12 +15,14 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
+  width: 100vw; /* Asegura que el contenedor ocupe todo el ancho de la ventana */
+  overflow: hidden; /* Asegura que no haya desbordamiento */
   background: linear-gradient(to bottom, #111111 0%, #424245 50%, #111111 100%);
 }
 
 .button-exit {
-  align-self: flex-start; /* Alinea el botón al inicio del eje principal */
-  padding: 20px; /* Espacio para no pegar el botón al borde */
+  align-self: flex-start;
+  padding: 20px;
   background-color: transparent;
 }
 
@@ -28,7 +35,8 @@ html, body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 20px; /* Espacio entre el botón de salida y el contenedor de imagen */
+  margin-top: 20px;
+  overflow: hidden; /* Evita que los elementos hijos causen desbordamiento */
 }
 
 .image-and-description {
@@ -48,15 +56,16 @@ html, body {
   height: 30px;
 }
 
-.imagen-container img {
-  width: 325px; /* Controla el tamaño de la imagen */
-  height: 232px;
+.imagen-container img, .imagen-container video {
+  width: 80vw; /* Ajusta el tamaño de las imágenes y videos para ser responsive */
+  max-width: 325px;
+  height: auto;
   object-fit: cover;
 }
 
 .descripcion {
   color: #fff;
-  font-size: 18px;
+  font-size: 4vw; /* Tamaño de fuente responsive */
   margin-top: 8px;
   text-align: center;
   font-family: sans-serif;
@@ -69,13 +78,30 @@ html, body {
   align-self: center;
 }
 
+.fil {
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para apilar Filmy y el diálogo verticalmente */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.filmypresentacion {
+  width: 50vw; /* Asegura que la imagen ocupe todo el contenedor */
+  max-width: 200px;
+  height: auto; /* Asegura que la imagen ocupe todo el contenedor */
+  object-fit: contain; /* Mantiene las proporciones de la imagen */
+}
+
+
 .filmy-galery {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* Centra el contenido horizontalmente */
   position: absolute;
-  top: 72vh;
-  left:24vh;
+  top: 70vh; /* Baja la posición del botón */
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
   z-index: 10;
@@ -87,9 +113,32 @@ html, body {
   z-index: 1000;
 }
 
-/* Asegura que los botones y controles de audio estén debajo de la galería */
 .audio_bottom {
   position: absolute;
   width: 100%;
   bottom: 0;
+}
+
+/* Media Query para dispositivos pequeños */
+@media (max-width: 600px) {
+  .filmypresentacion {
+    width: 80vw; /* Ajusta el ancho de la imagen en dispositivos pequeños */
+    max-width: 150px; /* Ajusta el ancho máximo de la imagen en dispositivos pequeños */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+
+
+
+  .descripcion {
+    font-size: 4vw; /* Ajusta el tamaño de la fuente en dispositivos pequeños */
+  }
+
+  .imagen-container img, .imagen-container video {
+    width: 90vw; /* Ajusta el tamaño de las imágenes y videos en dispositivos pequeños */
+    max-width: 280px;
+  }
+
+  .filmy-galery {
+    top: 80vh; /* Baja la posición del botón en dispositivos pequeños */
+  }
 }

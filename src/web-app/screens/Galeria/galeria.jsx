@@ -1,48 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./galeria.css"; // Asegúrate de tener este archivo CSS
-import obtenerImagenUrl from "../../firebase/config"; // Ajusta la ruta
+import { obtenerImgs } from "../../firebase/config.js";
 import LeftArrow from "./assets/left.svg";
 import RightArrow from "./assets/right.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import butonback from "./assets/LeftCircleOutlined.svg";
 import AudioControls from "../../components/AudioControls/AudioControls";
+import filmy from "./assets/SaludoPrueba2.0.svg";
+
 import { useNavigate } from "react-router-dom";
-import filmy from "./assets/Sin título-1.svg"
+import { useSelector } from "react-redux";
+
+// Importa los archivos de audio para cada objeto
+import HistoriaCamara1 from "./assets/audios/HistoriaCamara1.mp3";
+import HistoriaCamara2 from "./assets/audios/HistoriaCamara2.mp3";
+import HistoriaCamara3 from "./assets/audios/HistoriaCamara3.mp3";
+import HistoriaProyector1 from "./assets/audios/HistoriaProyector1.mp3";
+import HistoriaProyector2 from "./assets/audios/HistoriaProyector2.mp3";
+import HistoriaProyector3 from "./assets/audios/HistoriaProyector3.mp3";
+import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
+import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
+import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
-  const [medios, setMedios] = useState([]);
+  const [datos, setDatos] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
-    async function cargarMedios() {
-      const mediosInfo = [
-        { path: "pentax/Foto 1 - Cataras del Niagara.png", descripcion: "Fotógrafo: gmushinsky, Año: 2019, Cámara: Pentax K1000", tipo: 'imagen'  },
-      { path: "pentax/Foto 2 - Guitarra.png", descripcion: "Fotógrafo: fivedayforecast, Año: 2011, Cámara: Pentax K1000", tipo: 'imagen'  },
-      { path: "pentax/Foto 3 - Girasoles.png", descripcion: "Fotógrafo: bravopires, Año: 2013, Cámara: Pentax K1000" , tipo: 'imagen' },
-      { path: "pentax/Diapositiva astronomica.png", descripcion: "Diapositivas astronómicas mecánicas, Año: 1880, Autor: Baker of Holborn" ,tipo: 'imagen' },
-      { path: "pentax/Diapositiva indumentaria real.png", descripcion: "Diapositivas Indumentaria real, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
-      { path: "pentax/Diapositiva tribus africanas.png", descripcion: "Diapositivas colonias africanas, Siglo:XIX, Autor: Desconocido", tipo: 'imagen'  },
-      { path: "pentax/Tom and Jerry - Jolly Fish (1932-recortado).mp4", descripcion: "Fragmento de película: Tom y Jerry, Años: 1931, Autor: Amadee J. Van Beuren", tipo: 'video' },
-      { path: "pentax/high flyers (recortado).mp4", descripcion: "Fragmento de película: Abbott and Costello in High Flyers, Año: 1945, Autor: Castle Films", tipo: 'video' },
-      { path: "pentax/lion around.mp4", descripcion: "Fragmento de película: Donald Duck: Lion Around, Año:1950, Autor: Walt Disney", tipo: 'video' }
-      ];
+    const fetchData = async () => {
+      try {
+        const data = await obtenerImgs(id);
+        const formattedData = data ? Object.values(data).map(item => ({
+          ...item,
+          type: item.type || item.imagen // Normaliza la clave 'type'
+        })) : [];
+        setDatos(formattedData);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
 
-      const resultados = await Promise.all(
-        mediosInfo.map(item => obtenerImagenUrl(item.path))
-      );
-      setMedios(
-        resultados.map((url, index) => ({
-          src: url,
-          descripcion: mediosInfo[index].descripcion,
-          tipo: mediosInfo[index].tipo
-        }))
-      );
-    }
-
-    cargarMedios();
-  }, []);
+    fetchData();
+  }, [id]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => cambiarMedio("siguiente"),
@@ -54,50 +57,116 @@ const GaleriaPage = () => {
   };
 
   const cambiarMedio = (direccion) => {
-    if (direccion === "siguiente") {
-      setIndiceActivo((prevIndex) => (prevIndex + 1) % medios.length);
-    } else {
-      setIndiceActivo((prevIndex) => (prevIndex - 1 + medios.length) % medios.length);
+    setIndiceActivo((prevIndex) => {
+      const newIndex = direccion === "siguiente" ? (prevIndex + 1) % datos.length : (prevIndex - 1 + datos.length) % datos.length;
+      console.log("Cambiando a:", newIndex, "Datos:", datos[newIndex]);
+      return newIndex;
+    });
+  };
+
+  if (error) {
+    return <div>Error al cargar los datos: {error}</div>;
+  }
+
+  const obtenerAudio = () => {
+    if (id === "camara") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaCamara1;
+        case 1:
+          return HistoriaCamara2;
+        case 2:
+          return HistoriaCamara3;
+        default:
+          return HistoriaCamara1;
+      }
+    } else if (id === "proyector") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaProyector1;
+        case 1:
+          return HistoriaProyector2;
+        case 2:
+          return HistoriaProyector3;
+        default:
+          return HistoriaProyector1;
+      }
+    } else if (id === "linterna") {
+      switch (indiceActivo) {
+        case 0:
+          return HistoriaLinterna1;
+        case 1:
+          return HistoriaLinterna2;
+        case 2:
+          return HistoriaLinterna3;
+        default:
+          return HistoriaLinterna1;
+      }
     }
   };
 
-  if (!medios.length) return <div>Cargando medios...</div>;
-
   return (
-    <div className="galeria-container">
+    <div className="galeria-container" {...handlers}>
       <div className="button-exit">
-        <button className="button-regresar" onClick={handleButtonClick}>
+        <button className="button-regresar" onClick={() => navigate("/objeto")}>
           <img src={butonback} alt="Regresar" />
         </button>
       </div>
-      <div {...handlers} className="imagen-container">
+      <div className="imagen-container">
         <button onClick={() => cambiarMedio("anterior")} aria-label="Anterior">
           <img src={LeftArrow} alt="Anterior" />
         </button>
         <div className="image-and-description">
-          {medios[indiceActivo].tipo === 'imagen' ? (
-            <img src={medios[indiceActivo].src} alt={`Imagen ${indiceActivo + 1}`} />
+          {datos.length > 0 ? (
+            <div className="medio">
+              {datos[indiceActivo].type === "imagen" ? (
+                <img
+                  src={datos[indiceActivo].img}
+                  alt={datos[indiceActivo].descripcion}
+                  className="media-element"
+                />
+              ) : (
+                <video controls className="media-element" src={datos[indiceActivo].img} >
+                  Tu navegador no soporta la etiqueta de video.
+                </video>
+              )}
+              <p className="descripcion">{datos[indiceActivo].descripcion}</p>
+            </div>
           ) : (
-            <video src={medios[indiceActivo].src} controls style={{ width: '100%' }} />
+            <p>Cargando...</p>
           )}
-          <div className="descripcion">{medios[indiceActivo].descripcion}</div>
         </div>
-        <button onClick={() => cambiarMedio("siguiente")} aria-label="Siguiente">
+        <button
+          onClick={() => cambiarMedio("siguiente")}
+          aria-label="Siguiente"
+        >
           <img src={RightArrow} alt="Siguiente" />
         </button>
       </div>
-     < div className='filmy-galery'>
-        <img src={filmy} alt="" />
-        <CustomButton text="¿Y si me armas?" onClick={handleButtonClick} color="white" size="small" fontSize="medium" fontFamily="sans-serif" outline="1px solid black"/>
+      <div className="fil">
+        {id === "camara" ? (
+          <>
+            <img src={filmy} alt="Filmy" className="filmypresentacion" />
+          </>
+        ) : (
+          <img src={filmy} alt="Filmy" className="filmypresentacion" />
+        )}
+        <CustomButton
+          text="¿Y si me armas?"
+          onClick={handleButtonClick}
+          color="white"
+          size="small"
+          fontSize="medium"
+          fontFamily="sans-serif"
+          outline="1px solid black"
+        />
+      </div>
 
-          </div>
-      <AudioControls/>
+      {datos.length > 0 && <AudioControls audioSrc={obtenerAudio()} />}
+
+      <div className="filmy-galery"></div>
     </div>
   );
 };
 
 export default GaleriaPage;
-
-
-
-
