@@ -10,12 +10,14 @@ import { obtenerImgs } from "../../firebase/config.js";
 import ObjCaliwood from "../../components/obj/obj.jsx";
 import filmy from "./assets/BienvenidaNoDialog.gif";
 import DIALOGOPENTAX from "./assets/Diálogo4.png";
-import DIALOGOPROYECTOR from "./assets/Diálogo8PROYECTOR.png"
+import DIALOGOPROYECTOR from "./assets/Diálogo8PROYECTOR.png";
 import DIALOGOLINTERNA from "./assets/Diálogo12LITERNA.png";
 
 import HistoriaCamara from "./assets/Historia-Cámara.mp3";
 import HistoriaProyector from "./assets/Historia-proyector.mp3";
 import HistoriaLinterna from "./assets/Historia-Linterna.mp3";
+
+import filmyAr from "./assets/Sin título-1.png";
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
@@ -60,8 +62,12 @@ const ObjetoPage = () => {
         {id === "camara" ? (
           toggle ? (
             <div>
-              <h2>Contenido en Realidad Aumentada para Cámara</h2>
-              {/* Aquí puedes agregar contenido específico para la cámara en AR */}
+              <h2>
+                ¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está
+                funcionando en este momento, pero estamos trabajando para
+                arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
+              </h2>
+              <img src={filmyAr} alt=""/>
             </div>
           ) : (
             <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" />
@@ -69,21 +75,31 @@ const ObjetoPage = () => {
         ) : id === "proyector" ? (
           toggle ? (
             <div>
-              <h2>Contenido en Realidad Aumentada para Proyector</h2>
-              {/* Aquí puedes agregar contenido específico para el proyector en AR */}
+              <h2>
+                ¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está
+                funcionando en este momento, pero estamos trabajando para
+                arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
+              </h2>
+              <img src={filmyAr} alt=""/>
+
+              {/* Aquí pued es agregar contenido específico para el proyector en AR */}
             </div>
           ) : (
             <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
           )
+        ) : toggle ? (
+          <div>
+            <h2>
+              ¡Hola! Soy Filmy. La función de realidFad aumentada (AR) no está
+              funcionando en este momento, pero estamos trabajando para
+              arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
+            </h2>
+            <img src={filmyAr} alt=""/>
+
+            {/* Aquí puedes agregar contenido específico para la linterna en AR */}
+          </div>
         ) : (
-          toggle ? (
-            <div>
-              <h2>Contenido en Realidad Aumentada para Linterna</h2>
-              {/* Aquí puedes agregar contenido específico para la linterna en AR */}
-            </div>
-          ) : (
-            <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
-          )
+          <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
         )}
         {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
         {/* Componente de aviso que se muestra según el estado */}
@@ -93,22 +109,21 @@ const ObjetoPage = () => {
           <div>
             {id === "camara" ? (
               <>
-                <img src={filmy} alt="" className="fillm"/>
+                <img src={filmy} alt="" className="fillm" />
                 <img className="dialogo" src={DIALOGOPENTAX} alt="" />
               </>
             ) : id === "proyector" ? (
               <>
-                <img src={filmy} alt="" className="fillm"/>
+                <img src={filmy} alt="" className="fillm" />
                 <img className="dialogo" src={DIALOGOPROYECTOR} alt="" />
               </>
             ) : (
               <>
-                <img src={filmy} alt="" className="fillm"/>
+                <img src={filmy} alt="" className="fillm" />
                 <img className="dialogo" src={DIALOGOLINTERNA} alt="" />
               </>
             )}
           </div>
-          
         </>
       ) : (
         !toggle && ( // Condicional para mostrar el botón solo si el toggle está en "Objeto"
@@ -127,15 +142,9 @@ const ObjetoPage = () => {
       )}
 
       <div className="audio_obj">
-         {id === "camara" && (
-          <AudioControls audioSrc={HistoriaCamara} />
-        )}
-        {id === "proyector" && (
-          <AudioControls audioSrc={HistoriaProyector} />
-        )}
-        {id === "linterna" && (
-           <AudioControls audioSrc={HistoriaLinterna}/>
-        )}
+        {id === "camara" && <AudioControls audioSrc={HistoriaCamara} />}
+        {id === "proyector" && <AudioControls audioSrc={HistoriaProyector} />}
+        {id === "linterna" && <AudioControls audioSrc={HistoriaLinterna} />}
       </div>
     </div>
   );

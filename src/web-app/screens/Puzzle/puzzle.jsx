@@ -1,5 +1,4 @@
-import React, { useState, useEffect,avigate } from 'react';
-import BarAR from '../../components/BarAr/BarAr';
+import React, { useState, useEffect } from 'react';
 import MissingObject from '../../components/MissingObject/missingObject';
 import DraggableCamera from '../../components/DraggableCamera/DraggableCamera';
 import DraggableProjector from '../../components/DraggableProjector/DraggableProjector';
@@ -42,6 +41,9 @@ import incorrectSound from './assets/sonidos/sonidoincorrecto.mp3';
 import './puzzle.css';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import BarAr from '../../components/BarAr/BarAr';
+import ObjCaliwood from '../../components/obj/obj.jsx';
+import filmyAr from './assets/Sin título-1.png';
 
 const Puzzle = () => {
   const id = useSelector((state) => state.id.value);
@@ -89,6 +91,9 @@ const Puzzle = () => {
   const handleShowAviso = () => setShowAviso(true);
   const handleCloseAviso = () => setShowAviso(false);
 
+
+  const [toggle, setToggle] = useState(false); // Estado para manejar el toggle
+
   useEffect(() => {
     console.log('Puzzle ID:', id); // Mensaje de depuración
     if (!initialImages[id]) {
@@ -116,6 +121,10 @@ const Puzzle = () => {
   const playIncorrectSound = () => {
     const audio = new Audio(incorrectSound);
     audio.play();
+  };
+
+  const handleToggleChange = () => {
+    setToggle(!toggle);
   };
 
   const handleDrop = (draggedId, dropZoneId) => {
@@ -187,48 +196,59 @@ const Puzzle = () => {
     <DragAndDropProvider>
       <div className="puzzle-container">
         <div className="ar-button-container">
-          <BarAR text="Activate AR" />
+          <BarAr toggle={toggle} onToggleChange={handleToggleChange} />
         </div>
-        <div className="texto">
-          <p> Nota: Algunas veces no se podrá colocar el mismo objeto en la misma imagen. Al dar click puedes ver las otras vistas del objeto.</p>
-        </div>
-        <div className="object-3d-wrapper">
-          {id === 'camara' && (
-            <DraggableCamera
-              cameraState={cameraState}
-              srcClosed={camaraClosed}
-              srcFlash={camaraFlash}
-              srcLente={camaraLente}
-              srcTurned={camaraTurned}
-              srcOpen={camaraOpen}
-              srcRollo={camaraRollo}
-              onDrop={handleDrop}
-            />
-          )}
-          {id === 'proyector' && (
-             <DraggableProjector
-             projectorState={projectorState}
-             srcProyectorSin={ProyectorSin}
-             srcProyectorrollo={Proyectorrollo}
-             srcProyectorside={Proyectorside}
-             srcProyectorLente={ProyectorLente}
-             srcProyectorSinLampara={ProyectorSinLampara}
-             srcProyectorLampara={ProyectorLampara}
-             onDrop={handleDrop}
-           />
-          )}
-          {id === 'linterna' && (
-           <DraggableLantern
-           lanternState={lanternState}
-           srcSin={Linternasin}
-           srcBulb={linternabulb}
-           srcTop={linternatop}
-           srcFront={linternaFront}
-           srcPlaca={linternaplaca}
-           onDrop={handleDrop}
-         />
-          )}
-        </div>
+        {toggle ? (
+          <div className="ar-view">
+            <h2>
+              ¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está funcionando en este momento, pero estamos trabajando para arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
+            </h2>
+            <img src={filmyAr} alt="Filmy en AR" />
+          </div>
+        ) : (
+          <>
+            <div className="texto">
+              <p> Nota: Algunas veces no se podrá colocar el mismo objeto en la misma imagen. Al dar click puedes ver las otras vistas del objeto.</p>
+            </div>
+            <div className="object-3d-wrapper">
+              {id === 'camara' && (
+                <DraggableCamera
+                  cameraState={cameraState}
+                  srcClosed={camaraClosed}
+                  srcFlash={camaraFlash}
+                  srcLente={camaraLente}
+                  srcTurned={camaraTurned}
+                  srcOpen={camaraOpen}
+                  srcRollo={camaraRollo}
+                  onDrop={handleDrop}
+                />
+              )}
+              {id === 'proyector' && (
+                <DraggableProjector
+                  projectorState={projectorState}
+                  srcProyectorSin={ProyectorSin}
+                  srcProyectorrollo={Proyectorrollo}
+                  srcProyectorside={Proyectorside}
+                  srcProyectorLente={ProyectorLente}
+                  srcProyectorSinLampara={ProyectorSinLampara}
+                  srcProyectorLampara={ProyectorLampara}
+                  onDrop={handleDrop}
+                />
+              )}
+              {id === 'linterna' && (
+                <DraggableLantern
+                  lanternState={lanternState}
+                  srcSin={Linternasin}
+                  srcBulb={linternabulb}
+                  srcTop={linternatop}
+                  srcFront={linternaFront}
+                  srcPlaca={linternaplaca}
+                  onDrop={handleDrop}
+                />
+              )}
+            </div>
+          </>
+        )}
         {feedbackMessage && (
           <div className={`feedback-message ${feedbackMessage ? 'error' : ''}`}>
             {feedbackMessage}

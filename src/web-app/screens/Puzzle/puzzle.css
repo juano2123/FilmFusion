@@ -124,3 +124,9 @@ body {
     padding: 10px;
   }
 }
+
+.ar-view h2{
+  color: #ffffff;
+  display: ruby-text;
+
+}
