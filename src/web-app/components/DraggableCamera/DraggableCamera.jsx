@@ -36,7 +36,7 @@ const DraggableCamera = ({ cameraState, srcClosed, srcFlash, srcLente, srcTurned
     cameraImage = srcLente;
     dropZones = (
       <>
-        <DropZone id="flash-drop" onDrop={onDrop} style={{ top: '10px', left: '154px', width: '80px', height: '80px' }} />
+        <DropZone id="flash-drop" onDrop={onDrop} style={{ top: '8px', left: '160px', width: '80px', height: '80px' }} />
       </>
     );
   } else if (currentCameraState.hasFlash && currentCameraState.hasLente && !currentCameraState.isTurned) {

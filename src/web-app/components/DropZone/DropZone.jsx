@@ -47,8 +47,8 @@ const DropZone = ({ id, onDrop, children, style }) => {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       style={{
-        // border: '2px dashed #000',
-        // backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        border: '2px dashed #000',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
         position: 'absolute',
         ...style,
       }}
