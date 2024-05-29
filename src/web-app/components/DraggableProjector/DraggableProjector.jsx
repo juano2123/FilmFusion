@@ -36,7 +36,7 @@ const DraggableProjector = ({ projectorState, srcProyectorSin, srcProyectorrollo
   } else if (currentProjectorState.hasCinta) {
     if (flipped) {
       projectorImage = srcProyectorside; // Imagen del proyector girado para agregar el lente
-      dropZones = <DropZone id="lens-drop" onDrop={onDrop} style={{ top: '160px', left: '156px', width: '50px', height: '50px' }} />;
+      dropZones = <DropZone id="lens-drop" onDrop={onDrop} style={{ top: '160px', left: '156px', width: '70px', height: '70px' }} />;
     } else {
       projectorImage = srcProyectorrollo; // Imagen del proyector con la cinta añadida, esperando girar para agregar el lente
       dropZones = null;

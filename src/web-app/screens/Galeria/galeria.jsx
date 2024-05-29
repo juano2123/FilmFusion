@@ -146,7 +146,7 @@ const GaleriaPage = () => {
       <div className="fil">
         {id === "camara" ? (
           <>
-            <img src={filmy} alt="" className="fillm" />
+            <img src={filmy} alt="Filmy" className="filmypresentacion" />
           </>
         ) : (
           <img src={filmy} alt="Filmy" className="filmypresentacion" />

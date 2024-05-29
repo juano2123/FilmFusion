@@ -111,6 +111,12 @@ body {
   position: relative;
   /* Asegura que los elementos posicionados dentro sean relativos al contenedor */
 }
+.texto{
+  font-family: sans-serif;
+  color:#ffffff;
+  width: 300px;
+  text-align: center;
+}
 
 /* Estilos para adaptación responsiva y ajustes adicionales según necesidad */
 @media (max-width: 768px) {

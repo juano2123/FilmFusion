@@ -7,12 +7,12 @@ import './Start.css';
 import filmy from "./assets/BienvenidaNoDialogo.gif"
 
 const Start = () => {
-  const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 414);
+  const [mostrarAviso, setMostrarAviso] = useState(window.innerWidth > 434);
   const [mostrarCarga, setMostrarCarga] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
-      setMostrarAviso(window.innerWidth > 404);
+      setMostrarAviso(window.innerWidth > 434);
     };
 
     const temporizadorCarga = setTimeout(() => {
