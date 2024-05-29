@@ -190,7 +190,7 @@ const Puzzle = () => {
           <BarAR text="Activate AR" />
         </div>
         <div className="texto">
-          <p> Nota: Algunas veces no se podrá colocar el mismo objeto en la misma imagen. Al dar click puedes interactuar más.</p>
+          <p> Nota: Algunas veces no se podrá colocar el mismo objeto en la misma imagen. Al dar click puedes ver las otras vistas del objeto.</p>
         </div>
         <div className="object-3d-wrapper">
           {id === 'camara' && (
