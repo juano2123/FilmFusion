@@ -3,6 +3,7 @@ import "./objeto.css"; // Asegúrate de que el archivo de estilos existe
 import BarAr from "../../components/BarAr/BarAr.jsx";
 import AudioControls from "../../components/AudioControls/AudioControls";
 import CustomButton from "../../components/CustomButton/CustomButton";
+import Gallery from "../../components/Gallery/Gallery";
 import { useNavigate } from "react-router-dom";
 import AvisoAR from "../../components/AvisoAR/AvisoAR.jsx"; // Asegúrate de importar correctamente
 import { useSelector } from "react-redux";
@@ -117,7 +118,8 @@ const ObjetoPage = () => {
       ) : (
         !toggle && (
           <div className="boton_objs">
-            <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black" />
+          <Gallery/>
+            {/* <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black" /> */}
           </div>
         )
       )}
