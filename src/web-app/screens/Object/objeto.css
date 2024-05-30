@@ -51,6 +51,7 @@ body {
   z-index: 1000;
 }
 
+
 .instruccion{
   position: fixed;
   display: flex;
@@ -58,19 +59,25 @@ body {
   left: 10vh;
 
 }
-.boton_objs{
-  margin-top: auto; /* Empuja el botón hacia la parte inferior del contenedor */
-  align-self: end; /* Alinea el botón al final del contenedor */
+
+.boton_objs {
+  margin-top: auto;
+  /* Empuja el botón hacia la parte inferior del contenedor */
+  align-self: end;
+  /* Alinea el botón al final del contenedor */
   z-index: 9;
 }
-.fillm{display: flex;
+
+.fillm {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  position: fixed; 
-  top: 64vh; 
-  left: -3vh; 
+  position: fixed;
+  top: 64vh;
+  left: -3vh;
   transform: translate(-50%, -50%);
-  width: 150vh; /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
+  width: 150vh;
+  /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
   height: auto;
   z-index: 10;}
 
@@ -93,3 +100,19 @@ body {
   }
   
   
+
+  z-index: 10;
+}
+
+.obj-3D {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.obj-3D h2 {
+
+  display: ruby-text;
+
+}
+

@@ -19,9 +19,9 @@ import HistoriaCamara3 from "./assets/audios/HistoriaCamara3.mp3";
 import HistoriaProyector1 from "./assets/audios/HistoriaProyector1.mp3";
 import HistoriaProyector2 from "./assets/audios/HistoriaProyector2.mp3";
 import HistoriaProyector3 from "./assets/audios/HistoriaProyector3.mp3";
-import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna1.mp3";
+import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna1.mp3";
 import HistoriaLinterna2 from "./assets/audios/HistoriaLinterna2.mp3";
-import HistoriaLinterna3 from "./assets/audios/HistoriaLinterna3.mp3";
+import HistoriaLinterna1 from "./assets/audios/HistoriaLinterna3.mp3";
 
 const GaleriaPage = () => {
   const [indiceActivo, setIndiceActivo] = useState(0);
