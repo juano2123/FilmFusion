@@ -135,7 +135,7 @@ html, body {
 
   .imagen-container img, .imagen-container video {
     width: 90vw; /* Ajusta el tamaño de las imágenes y videos en dispositivos pequeños */
-    max-width: 280px;
+    /* max-width: 280px; */
   }
 
   .filmy-galery {
