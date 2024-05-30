@@ -51,6 +51,15 @@ body {
   z-index: 1000;
 }
 
+
+.instruccion{
+  position: fixed;
+  display: flex;
+  top: 56vh;
+  left: 10vh;
+
+}
+
 .boton_objs {
   margin-top: auto;
   /* Empuja el botón hacia la parte inferior del contenedor */
@@ -70,6 +79,28 @@ body {
   width: 150vh;
   /* Ajusta el ancho al 100% del ancho de la ventana del navegador */
   height: auto;
+  z-index: 10;}
+
+  .obj-3D {
+    position: relative; /* O 'absolute' si necesitas posicionarlo respecto a un contenedor específico */
+    width: 50vw; /* Ancho del objeto 3D */
+    height: 50vh; /* Altura del objeto 3D */
+    top: 20vh; /* Posición desde el top del viewport o contenedor padre */
+    left: 25vw; /* Posición desde el lado izquierdo del viewport o contenedor padre */
+    z-index: 5; /* Asegura que se muestre correctamente sobre otros elementos si es necesario */
+  }
+
+  .obj-3D-wrapper {
+    position: absolute;
+    width: 60vw; /* Ancho del contenedor del objeto 3D */
+    height: 40vh; /* Altura del contenedor del objeto 3D */
+    top: 10vh; /* Posición superior desde el viewport */
+    left: 20vw; /* Posición izquierda desde el viewport */
+    z-index: 5; /* Controla la visibilidad relativa */
+  }
+  
+  
+
   z-index: 10;
 }
 
@@ -84,3 +115,4 @@ body {
   display: ruby-text;
 
 }
+

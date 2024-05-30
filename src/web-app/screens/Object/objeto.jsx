@@ -12,6 +12,7 @@ import filmy from "./assets/BienvenidaNoDialog.gif";
 import DIALOGOPENTAX from "./assets/Diálogo4.png";
 import DIALOGOPROYECTOR from "./assets/Diálogo8PROYECTOR.png";
 import DIALOGOLINTERNA from "./assets/Diálogo12LITERNA.png";
+import arrow from "./assets/arrow.png";
 
 import HistoriaCamara from "./assets/Historia-Cámara.mp3";
 import HistoriaProyector from "./assets/Historia-proyector.mp3";
@@ -71,6 +72,7 @@ const ObjetoPage = () => {
             </div>
           ) : (
             <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" />
+            <img className="instruccion" src={arrow} alt="Instrucción" />
           )
         ) : id === "proyector" ? (
           toggle ? (
@@ -86,6 +88,7 @@ const ObjetoPage = () => {
             </div>
           ) : (
             <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
+            <img className="instruccion" src={arrow} alt="Instrucción" />
           )
         ) : toggle ? (
           <div>
@@ -100,10 +103,28 @@ const ObjetoPage = () => {
           </div>
         ) : (
           <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
+          <img className="instruccion" src={arrow} alt="Instrucción" />
         )}
         {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
         {/* Componente de aviso que se muestra según el estado */}
       </div>
+    )
+  ) : (
+    toggle ? (
+      <div>
+        <h2>Contenido en Realidad Aumentada para Linterna</h2>
+      </div>
+    ) : (
+      <div className="obj-3D-wrapper">
+        <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" width="440vw" height="50vh" translateX="-43%" translateY="-73%" />
+        <img className="instruccion" src={arrow} alt="Instrucción" />
+      </div>
+    )
+  )}
+  {showAviso && <AvisoAR onClose={handleCloseAviso} />}
+</div>
+
+
       {showElements ? (
         <>
           <div>
