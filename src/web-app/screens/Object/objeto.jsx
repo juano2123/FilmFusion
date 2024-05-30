@@ -17,7 +17,7 @@ import HistoriaCamara from "./assets/Historia-Cámara.mp3";
 import HistoriaProyector from "./assets/Historia-proyector.mp3";
 import HistoriaLinterna from "./assets/Historia-Linterna.mp3";
 
-import filmyAr from "./assets/Sin título-1.png";
+import filmyAr from "./assets/titulo.png";
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
