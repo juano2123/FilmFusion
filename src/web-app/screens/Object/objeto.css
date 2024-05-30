@@ -61,11 +61,12 @@ body {
 }
 
 .boton_objs {
-  margin-top: auto;
-  /* Empuja el botón hacia la parte inferior del contenedor */
-  align-self: end;
-  /* Alinea el botón al final del contenedor */
-  z-index: 9;
+  position: fixed; /* Asegura que el botón se mantenga en una posición específica respecto a la ventana del navegador */
+  bottom: 53px; /* Posiciona el botón a 20px del borde inferior, en lugar de usar 'top' */
+  right: 3px; /* Posiciona el botón a 20px del borde derecho, en lugar de usar 'left' */
+  z-index: 9; /* Mantiene el botón por encima de otros elementos si es necesario */
+  margin-top: auto; /* No es necesario si usas position fixed */
+  align-self: end; /* No es necesario si usas position fixed */
 }
 
 .fillm {
@@ -83,10 +84,10 @@ body {
 
   .obj-3D {
     position: relative; /* O 'absolute' si necesitas posicionarlo respecto a un contenedor específico */
-    width: 50vw; /* Ancho del objeto 3D */
-    height: 50vh; /* Altura del objeto 3D */
-    top: 20vh; /* Posición desde el top del viewport o contenedor padre */
-    left: 25vw; /* Posición desde el lado izquierdo del viewport o contenedor padre */
+    /* width: 50vw; Ancho del objeto 3D */
+    /* height: 50vh; Altura del objeto 3D */
+    /* top: 30vh; Posición desde el top del viewport o contenedor padre */
+    /* left: 25vw; Posición desde el lado izquierdo del viewport o contenedor padre */
     z-index: 5; /* Asegura que se muestre correctamente sobre otros elementos si es necesario */
   }
 
@@ -95,7 +96,7 @@ body {
     width: 60vw; /* Ancho del contenedor del objeto 3D */
     height: 40vh; /* Altura del contenedor del objeto 3D */
     top: 10vh; /* Posición superior desde el viewport */
-    left: 20vw; /* Posición izquierda desde el viewport */
+    left: 20vw; /*Posición izquierda desde el viewport
     z-index: 5; /* Controla la visibilidad relativa */
   }
   
