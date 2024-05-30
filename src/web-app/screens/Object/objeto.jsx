@@ -65,7 +65,7 @@ const ObjetoPage = () => {
       </div>
     ) : (
       <div className="obj-3D-wrapper">
-        <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" />
+        <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" width="440vw" height="50vh" translateX="-50%" translateY="-50%" />
         <img className="instruccion" src={arrow} alt="Instrucción" />
       </div>
     )
@@ -76,7 +76,7 @@ const ObjetoPage = () => {
       </div>
     ) : (
       <div className="obj-3D-wrapper">
-        <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
+        <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" width="440vw" height="50vh" translateX="-50%" translateY="-50%"/>
         <img className="instruccion" src={arrow} alt="Instrucción" />
       </div>
     )
@@ -87,7 +87,7 @@ const ObjetoPage = () => {
       </div>
     ) : (
       <div className="obj-3D-wrapper">
-        <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
+        <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" width="440vw" height="50vh" translateX="-43%" translateY="-73%" />
         <img className="instruccion" src={arrow} alt="Instrucción" />
       </div>
     )

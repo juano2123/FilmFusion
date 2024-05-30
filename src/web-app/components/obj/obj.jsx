@@ -1,15 +1,17 @@
 import React from "react";
 import Spline from '@splinetool/react-spline';
 
-const ObjCaliwood  = ({ url }) => {
+const ObjCaliwood = ({ url, width, height, translateX, translateY }) => {
+  const transformStyle = `translate(${translateX}, ${translateY})`;
+
   return (
     <div className="obj" style={{
       position: 'fixed', 
       top: '50%', 
       left: '50%', 
-      transform: 'translate(-50%, -50%)', 
-      width: '404vw', 
-      height: '50vh'
+      transform: transformStyle, // Usar la variable transformStyle para el traslado
+      width: width,  // Usar la propiedad width pasada al componente
+      height: height  // Usar la propiedad height pasada al componente
     }}>
       <Spline scene={url} />
     </div>
@@ -17,4 +19,6 @@ const ObjCaliwood  = ({ url }) => {
 };
 
 export default ObjCaliwood;
+
+
 
