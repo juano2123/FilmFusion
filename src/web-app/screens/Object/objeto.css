@@ -99,10 +99,7 @@ body {
     z-index: 5; /* Controla la visibilidad relativa */
   }
   
-  
 
-  z-index: 10;
-}
 
 .obj-3D {
   display: flex;

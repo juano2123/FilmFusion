@@ -22,17 +22,16 @@ import filmyAr from "./assets/titulo.png";
 
 const ObjetoPage = () => {
   const navigate = useNavigate();
-  const [showAviso, setShowAviso] = useState(false); // Estado para controlar la visibilidad del aviso
-  const [showElements, setShowElements] = useState(true); // Estado para controlar la visibilidad de los elementos filmy y DIALOGOPENTAX
-  const [toggle, setToggle] = useState(false); // Estado para manejar el toggle
+  const [showAviso, setShowAviso] = useState(false);
+  const [showElements, setShowElements] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const id = useSelector((state) => state.id.value);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowElements(false);
-    }, 5000); // 5000 ms = 5 segundos
-
-    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    }, 5000);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleButtonClick = () => {
@@ -43,12 +42,10 @@ const ObjetoPage = () => {
     setShowAviso(true);
   };
 
-  // Función para cerrar el aviso
   const handleCloseAviso = () => {
     setShowAviso(false);
   };
 
-  // Función para manejar el cambio del toggle
   const handleToggleChange = () => {
     setToggle(!toggle);
   };
@@ -58,73 +55,44 @@ const ObjetoPage = () => {
       <div className="objet-container">
         <BarAr toggle={toggle} onToggleChange={handleToggleChange} />
       </div>
-      <div className="galeria">{/* <Showgalery/> */}</div>
       <div className="obj-3D">
         {id === "camara" ? (
           toggle ? (
             <div>
-              <h2>
-                ¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está
-                funcionando en este momento, pero estamos trabajando para
-                arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
-              </h2>
-              <img src={filmyAr} alt=""/>
+              <h2>¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está funcionando en este momento, pero estamos trabajando para arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy</h2>
+              <img src={filmyAr} alt="Filmy"/>
             </div>
           ) : (
-            <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" />
-            <img className="instruccion" src={arrow} alt="Instrucción" />
+            <>
+              <ObjCaliwood url="https://prod.spline.design/iuSlbKi3OIGVXd6S/scene.splinecode" width="440vw" height="50vh" translateX="-50%" translateY="-50%" />
+              <img className="instruccion" src={arrow} alt="Instrucción" />
+            </>
           )
         ) : id === "proyector" ? (
           toggle ? (
             <div>
-              <h2>
-                ¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está
-                funcionando en este momento, pero estamos trabajando para
-                arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
-              </h2>
-              <img src={filmyAr} alt=""/>
-
-              {/* Aquí pued es agregar contenido específico para el proyector en AR */}
+              <h2>¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está funcionando en este momento, pero estamos trabajando para arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy</h2>
+              <img src={filmyAr} alt="Filmy"/>
             </div>
           ) : (
-            <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" />
-            <img className="instruccion" src={arrow} alt="Instrucción" />
+            <>
+              <ObjCaliwood url="https://prod.spline.design/xitGTluBxvkmAKAX/scene.splinecode" width="440vw" height="50vh" translateX="-50%" translateY="-50%" />
+              <img className="instruccion" src={arrow} alt="Instrucción" />
+            </>
           )
         ) : toggle ? (
           <div>
-            <h2>
-              ¡Hola! Soy Filmy. La función de realidFad aumentada (AR) no está
-              funcionando en este momento, pero estamos trabajando para
-              arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy
-            </h2>
-            <img src={filmyAr} alt=""/>
-
-            {/* Aquí puedes agregar contenido específico para la linterna en AR */}
+            <h2>¡Hola! Soy Filmy. La función de realidad aumentada (AR) no está funcionando en este momento, pero estamos trabajando para arreglarla pronto. ¡Gracias por su paciencia! Atentamente, Filmy</h2>
+            <img src={filmyAr} alt="Filmy"/>
           </div>
         ) : (
-          <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" />
-          <img className="instruccion" src={arrow} alt="Instrucción" />
+          <>
+            <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" width="440vw" height="50vh" translateX="-43%" translateY="-73%" />
+            <img className="instruccion" src={arrow} alt="Instrucción" />
+          </>
         )}
-        {showAviso && <AvisoAR onClose={handleCloseAviso} />}{" "}
-        {/* Componente de aviso que se muestra según el estado */}
+        {showAviso && <AvisoAR onClose={handleCloseAviso} />}
       </div>
-    )
-  ) : (
-    toggle ? (
-      <div>
-        <h2>Contenido en Realidad Aumentada para Linterna</h2>
-      </div>
-    ) : (
-      <div className="obj-3D-wrapper">
-        <ObjCaliwood url="https://prod.spline.design/A-uJqBLvPXFAG3ze/scene.splinecode" width="440vw" height="50vh" translateX="-43%" translateY="-73%" />
-        <img className="instruccion" src={arrow} alt="Instrucción" />
-      </div>
-    )
-  )}
-  {showAviso && <AvisoAR onClose={handleCloseAviso} />}
-</div>
-
-
       {showElements ? (
         <>
           <div>
@@ -147,21 +115,12 @@ const ObjetoPage = () => {
           </div>
         </>
       ) : (
-        !toggle && ( // Condicional para mostrar el botón solo si el toggle está en "Objeto"
+        !toggle && (
           <div className="boton_objs">
-            <CustomButton
-              onClick={handleButtonClick}
-              text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar."
-              color="grey"
-              size="large"
-              fontSize="medium"
-              fontFamily="sans-serif"
-              outline="0px solid black"
-            />
+            <CustomButton onClick={handleButtonClick} text="Descubre los archivos únicos creados por este objeto. Haz clic para avanzar." color="grey" size="large" fontSize="medium" fontFamily="sans-serif" outline="0px solid black" />
           </div>
         )
       )}
-
       <div className="audio_obj">
         {id === "camara" && <AudioControls audioSrc={HistoriaCamara} />}
         {id === "proyector" && <AudioControls audioSrc={HistoriaProyector} />}
