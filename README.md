@@ -22,3 +22,14 @@
     npm start
     ```
 3. Para poder usar la aplicacion en pc se debe adaptar la pantalla para pantallas de celular, ya que todo esta pensando para un ambiente de celular
+
+4. En el inicio de la aplicacion asegurarse que dentro del url este los siguiente (http://localhost:3000/**?id=proyector**), ya que dentro de la experencia diseñada, hay un elemento fisico por la cual el usuario accede desde un codigo QR
+
+
+este el proyecto ya desplegado
+<div align="center">
+<a href="https://caliwood.netlify.app?id=proyector/">
+<img src="public/readme.png">
+</a>
+<p></p>
+</div>
